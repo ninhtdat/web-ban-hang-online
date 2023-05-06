@@ -34,6 +34,11 @@ class SanphamController extends Controller
         //
         $request->validate([
             'name' => 'required',
+            'picture' => 'required',
+            'giagoc' => 'required',
+            'giaban' => 'required',
+            'loai' => 'required',
+
         ]);
         $sanpham = new sanpham;
         $sanpham->sp_ten = $request->name;
