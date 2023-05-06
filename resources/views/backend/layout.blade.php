@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -27,10 +28,10 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                 {{-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div> --}}
@@ -66,7 +67,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Thêm đơn hàng mới</a>
-                        <a class="collapse-item" href="#">Tất cả đơn hàng</a>
+                        <a class="collapse-item" href="{{ route('orders.index') }}">Tất cả đơn hàng</a>
                         <a class="collapse-item" href="#">Đơn hàng chưa thanh toán</a>
                         <a class="collapse-item" href="#">Đơn hàng chưa giao</a>
                         <a class="collapse-item" href="#">Đơn hàng đã hoàn thành</a>
@@ -83,7 +84,7 @@
                 <div id="collapseProducts" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Tất cả sản phẩm</a>
+                        <a class="collapse-item" href="{{ route('sanpham.index') }}">Tất cả sản phẩm</a>
                         <a class="collapse-item" href="#">Nhóm sản phẩm</a>
                         <a class="collapse-item" href="#">Tồn kho</a>
                     </div>
@@ -91,7 +92,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('customers.index')}}">
                     <i class="fa fa-user-circle"></i>
                     <span>Khách hàng</span></a>
             </li>
@@ -103,7 +104,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('reports.index')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Báo cáo</span></a>
             </li>
@@ -133,7 +134,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    {{-- <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -145,17 +146,17 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                            {{-- <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
-                            </a>
+                            </a> --}}
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
@@ -390,6 +391,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
+
+        <!-- Page level plugins -->
+        <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    
+        <!-- Page level custom scripts -->
+        <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
 
 </body>
 
