@@ -45,13 +45,19 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <strong>hình ảnh</strong>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" name="image">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
-                                </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <div class="file-loading">
+                                      <label>hình ảnh</label>
+                                      <input id="sp_hinh" type="file" name="sp_hinh">
+                                    </div>
+                                  </div>
                             </div>
                             <div class="form-row">
                                 <div class="card-body">
