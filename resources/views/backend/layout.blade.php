@@ -67,7 +67,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Thêm đơn hàng mới</a>
-                        <a class="collapse-item" href="{{ route('orders.index') }}">Tất cả đơn hàng</a>
+                        <a class="collapse-item" href="{{ route('order.index') }}">Tất cả đơn hàng</a>
                         <a class="collapse-item" href="#">Đơn hàng chưa thanh toán</a>
                         <a class="collapse-item" href="#">Đơn hàng chưa giao</a>
                         <a class="collapse-item" href="#">Đơn hàng đã hoàn thành</a>
@@ -84,15 +84,15 @@
                 <div id="collapseProducts" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('sanpham.index') }}">Tất cả sản phẩm</a>
-                        <a class="collapse-item" href="#">Nhóm sản phẩm</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Tất cả sản phẩm</a>
+                        <a class="collapse-item" href="{{ route('product-type.index') }}">Nhóm sản phẩm</a>
                         <a class="collapse-item" href="#">Tồn kho</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('customers.index')}}">
+                <a class="nav-link" href="{{ route('customer.index') }}">
                     <i class="fa fa-user-circle"></i>
                     <span>Khách hàng</span></a>
             </li>
@@ -104,7 +104,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('reports.index')}}">
+                <a class="nav-link" href="{{ route('report.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Báo cáo</span></a>
             </li>
@@ -300,8 +300,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ninh Dat</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('backend/img/admin.jpg') }}">
+                                <img class="img-profile rounded-circle" src="{{ asset('backend/img/admin.jpg') }}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -319,7 +318,7 @@
                                     Activity Log
                                 </a> --}}
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                end your current session <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -392,14 +391,13 @@
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('backend/js/sb-admin-2.min.js') }}"></script>
 
-        <!-- Page level plugins -->
-        <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    
-        <!-- Page level custom scripts -->
-        <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
+    <!-- Page level plugins -->
+    <script src="{{ asset('backend/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
 
 </body>
 
 </html>
-

@@ -7,10 +7,10 @@
         </div>
     </div>
 </div>
-<!-- <h2>Orders table</h2>
+{{-- <!-- <h2>Orders table</h2>
 <div class="pull-right mb-2">
   <a class="btn btn-success" href="{{ route('orders.create') }}"> Add order</a>
-</div> -->
+</div> --> --}}
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>

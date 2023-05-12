@@ -9,16 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    
     public function up(): void
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->string('customer');
-            $table->boolean('pay');
-            $table->boolean('delivery');
-            $table->float('total', 8, 2);
-            $table->unsignedInteger('id_order_detail');
-            $table->foreign('id_order_detail')->references('id')->on('order_details');
+            $table->string('product_id_list', 50);
+            $table->string('product_quantity_list', 100);
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_details');
     }
 };

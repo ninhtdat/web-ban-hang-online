@@ -8,11 +8,11 @@
         <div class="card-body">
 
             <div class="container mt-2">
-                <a class="btn btn-primary" href="{{ route('sanpham.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
                 <div class="card-body">
                     <div class="card shadow mb-4">
-                        <form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
@@ -92,7 +92,7 @@
                 <h2>Add Company</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('sanpham.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -101,7 +101,7 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

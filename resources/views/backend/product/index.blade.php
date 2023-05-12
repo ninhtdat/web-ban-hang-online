@@ -10,7 +10,7 @@
     </div>
     <h2>Danh sách sản phẩm</h2>
     <div class="pull-right mb-2">
-        <a class="btn btn-success" href="{{ route('sanpham.create') }}"> Add product</a>
+        <a class="btn btn-success" href="{{ route('product.create') }}"> Add product</a>
     </div>
     {{-- <div class="table-responsive">
   <table class="table table-striped table-sm">
@@ -25,17 +25,17 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($sanpham as $sanpham)
+      @foreach ($product as $product)
       <tr>
-        <td>{{ $sanpham->id }}</td>
-        <td>{{ $sanpham->sp_ten }}</td>
-        <td>{{ $sanpham->sp_hinh }}</td>
-        <td>{{ $sanpham->sp_giaGoc }}</td>
-        <td>{{ $sanpham->sp_giaBan }}</td>
-        <td>{{ $sanpham->l_ma }}</td>
+        <td>{{ $product->id }}</td>
+        <td>{{ $product->sp_ten }}</td>
+        <td>{{ $product->sp_hinh }}</td>
+        <td>{{ $product->sp_giaGoc }}</td>
+        <td>{{ $product->sp_giaBan }}</td>
+        <td>{{ $product->l_ma }}</td>
         <td>
-          <form action="{{ route('sanpham.destroy',$sanpham->id) }}" method="Post">
-            <a class="btn btn-primary" href="{{ route('sanpham.edit',$sanpham->id) }}">Edit</a>
+          <form action="{{ route('product.destroy',$product->id) }}" method="Post">
+            <a class="btn btn-primary" href="{{ route('product.edit',$product->id) }}">Edit</a>
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>
@@ -51,9 +51,9 @@
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4 ">
-            <div class="card-header py-3">
+            {{-- <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div>
+            </div> --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
