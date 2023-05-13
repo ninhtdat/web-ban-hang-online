@@ -78,7 +78,7 @@
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->image }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->product_type_id }}</td>
+                                    <td>{{ $product->type->name }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->cost }}</td>
                                     <td>{{ $product->price }}</td>

@@ -17,7 +17,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <strong>tên loại sản phẩm</strong>
-                                    <input type="text" name="name" class="form-control" placeholder="quần short nam">
+                                    <input type="text" name="name" class="form-control" placeholder="quần short nam"
+                                        required minlength="1" maxlength="40">
                                 </div>
                             </div>
                             <div class="card-body">

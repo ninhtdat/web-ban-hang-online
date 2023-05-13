@@ -36,11 +36,12 @@ class ProductController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            // 'cost' => 'required',
-            // 'price' => 'required',
+            'cost' => 'required',
+            'price' => 'required',
             'type' => 'required',
 
         ]);
+
         $product = new product;
         $product->name = $request->name;
         $product->image = $request->image;
@@ -71,7 +72,8 @@ class ProductController extends Controller
     {
         //
         $product = product::find($id);
-        return view('backend.product.edit', compact('product'));
+        $types = ProductType::all();
+        return view('backend.product.edit', compact('product', 'types'));
     }
 
     /**
@@ -84,7 +86,7 @@ class ProductController extends Controller
             'name' => 'required',
             'cost' => 'required',
             'price' => 'required',
-            'product_type_id' => 'required',
+            'type' => 'required',
 
         ]);
         $product = product::find($id);
@@ -94,7 +96,7 @@ class ProductController extends Controller
         $product->cost = $request->cost;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->product_type_id = $request->product_type_id;
+        $product->product_type_id = $request->type;
         $product->save();
         return redirect()->route('product.index')
             ->with('success', 'product Has Been updated successfully');
