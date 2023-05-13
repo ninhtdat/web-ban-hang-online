@@ -86,44 +86,18 @@
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>
                                     <td>
-                                        <div class="form-row">
-                                            <form><a href="{{ route('product.edit', $product->id) }}"
-                                                    class="btn btn-info btn-circle">
-                                                    <i class="fa fa-wrench"></i>
-                                                </a></form>
-                                            {{-- Delete --}}
-                                            <button type="submit" class="btn btn-danger btn-circle" data-toggle="modal"
-                                                data-target="#deleteModal">
+                                        <form action="{{ route('product.destroy', $product->id) }}" method="Post">
+                                            <a href="{{ route('product.edit', $product->id) }}"
+                                                class="btn btn-info btn-circle">
+                                                <i class="fa fa-wrench"></i>
+                                            </a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-circle">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?
-                                                            </h5>
+                                        </form>
 
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button class="btn btn-secondary" type="button"
-                                                                data-dismiss="modal">Cancel</button>
-                                                            <form action="{{ route('product.destroy', $product->id) }}"
-                                                                method="Post">
-
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button class="btn btn-danger"
-                                                                    type="submit">Delete</button>
-                                                                </button>
-                                                            </form>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{-- end delete  --}}
-                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
