@@ -16,19 +16,21 @@
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <strong>tên sản phẩm</strong>
+                                    <strong>tên sản phẩm*</strong>
                                     <input type="text" name="name" class="form-control" placeholder="quần short nam">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="card-body">
-                                    <strong>loại</strong>
+                                    <strong>loại*</strong>
                                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref"
                                         name="type">
                                         <option selected>Choose...</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        
+                                        @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                        @endforeach
+                                
                                     </select>
                                 </div>
                                 <div class="card-body">
@@ -54,7 +56,7 @@
                                 </div> --}}
                                 <div class="form-group">
                                     <div class="file-loading">
-                                      <label>hình ảnh</label>
+                                      <label>hình ảnh*</label>
                                       <input id="sp_hinh" type="file" name="sp_hinh">
                                     </div>
                                   </div>

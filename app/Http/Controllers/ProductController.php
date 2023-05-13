@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductType;
 
 class ProductController extends Controller
 {
@@ -23,7 +24,8 @@ class ProductController extends Controller
     public function create()
     {
         //
-        return view('backend.product.create');
+        $types = producttype::all();
+        return view('backend.product.create', compact('types'));
     }
 
     /**
@@ -34,9 +36,9 @@ class ProductController extends Controller
         //
         $request->validate([
             'name' => 'required',
-            'cost' => 'required',
-            'price' => 'required',
-            'product_type_id' => 'required',
+            // 'cost' => 'required',
+            // 'price' => 'required',
+            'type' => 'required',
 
         ]);
         $product = new product;
@@ -46,7 +48,7 @@ class ProductController extends Controller
         $product->cost = $request->cost;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->product_type_id = $request->product_type_id;
+        $product->product_type_id = $request->type;
         $product->save();
         return redirect()->route('product.index')
             ->with('success', 'product has been created successfully.');
@@ -58,8 +60,8 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        $product = product::find($id);
-        return view('product.show', compact('product'));
+        // $product = product::find($id);
+        // return view('product.show', compact('product'));
     }
 
     /**
@@ -85,7 +87,7 @@ class ProductController extends Controller
             'product_type_id' => 'required',
 
         ]);
-        $product = new product;
+        $product = product::find($id);
         $product->name = $request->name;
         $product->image = $request->image;
         $product->quantity = $request->quantity;

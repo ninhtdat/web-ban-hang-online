@@ -73,107 +73,60 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td><img class="img-fluid img-thumbnail"
-                                        src="{{ asset('backend/img/undraw_profile.svg') }}"></td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td><img class="img-fluid img-thumbnail"
-                                        src="{{ asset('backend/img/undraw_profile.svg') }}"></td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td><img class="img-fluid img-thumbnail"
-                                        src="{{ asset('backend/img/undraw_profile.svg') }}"></td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td><img class="img-fluid img-thumbnail"
-                                        src="{{ asset('backend/img/undraw_profile.svg') }}"></td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>61</td>
-                                <td>2011/04/25</td>
-                                <td><img class="img-fluid img-thumbnail"
-                                        src="{{ asset('backend/img/undraw_profile.svg') }}"></td>
-                                <td>Junior Technical Author</td>
-                                <td>San Francisco</td>
-                                <td>66</td>
-                                <td>2009/01/12</td>
-                                <td>
-                                    <a href="#" class="btn btn-info btn-circle">
-                                        <i class="fa fa-wrench"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                </td>
-                            </tr>
+                            @foreach ($product as $product)
+                                <tr>
+                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->image }}</td>
+                                    <td>{{ $product->name }}</td>
+                                    <td>{{ $product->product_type_id }}</td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->cost }}</td>
+                                    <td>{{ $product->price }}</td>
+                                    <td>{{ $product->description }}</td>
+                                    <td>{{ $product->created_at }}</td>
+                                    <td>{{ $product->updated_at }}</td>
+                                    <td>
+                                        <div class="form-row">
+                                            <form><a href="{{ route('product.edit', $product->id) }}"
+                                                    class="btn btn-info btn-circle">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a></form>
+                                            {{-- Delete --}}
+                                            <button type="submit" class="btn btn-danger btn-circle" data-toggle="modal"
+                                                data-target="#deleteModal">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?
+                                                            </h5>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-secondary" type="button"
+                                                                data-dismiss="modal">Cancel</button>
+                                                            <form action="{{ route('product.destroy', $product->id) }}"
+                                                                method="Post">
+
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="btn btn-danger"
+                                                                    type="submit">Delete</button>
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- end delete  --}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
