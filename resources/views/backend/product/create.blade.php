@@ -8,27 +8,29 @@
         <div class="card-body">
 
             <div class="container mt-2">
-                <a class="btn btn-primary" href="{{ route('sanpham.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
 
                 <div class="card-body">
                     <div class="card shadow mb-4">
-                        <form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <strong>tên sản phẩm</strong>
+                                    <strong>tên sản phẩm*</strong>
                                     <input type="text" name="name" class="form-control" placeholder="quần short nam">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="card-body">
-                                    <strong>loại</strong>
+                                    <strong>loại*</strong>
                                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref"
                                         name="type">
                                         <option selected>Choose...</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        
+                                        @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                        @endforeach
+                                
                                     </select>
                                 </div>
                                 <div class="card-body">
@@ -45,13 +47,19 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <strong>hình ảnh</strong>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="customFile" name="image">
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
-                                </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <div class="file-loading">
+                                      <label>hình ảnh*</label>
+                                      <input id="sp_hinh" type="file" name="sp_hinh">
+                                    </div>
+                                  </div>
                             </div>
                             <div class="form-row">
                                 <div class="card-body">
@@ -86,7 +94,7 @@
                 <h2>Add Company</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('sanpham.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -95,7 +103,7 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('sanpham.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

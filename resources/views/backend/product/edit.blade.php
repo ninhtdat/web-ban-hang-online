@@ -8,7 +8,7 @@
                 <h2>Edit product</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('sanpham.index') }}" enctype="multipart/form-data"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}" enctype="multipart/form-data"> Back</a>
             </div>
         </div>
     </div>
@@ -17,14 +17,14 @@
         {{ session('status') }}
     </div>
     @endif
-    <form action="{{ route('sanpham.update',$sanpham->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>tên sản phẩm:</strong>
-                    <input type="text" name="name" value="{{ $sanpham->sp_ten }}" class="form-control" placeholder="">
+                    <input type="text" name="name" value="{{ $product->sp_ten }}" class="form-control" placeholder="">
                     @error('name')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
@@ -33,19 +33,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Link hình ảnh:</strong>
-                    <input type="text" name="picture" value="{{ $sanpham->sp_hinh }}" class="form-control" placeholder="images/product-01.jpg">
+                    <input type="text" name="picture" value="{{ $product->sp_hinh }}" class="form-control" placeholder="images/product-01.jpg">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Giá gốc:</strong>
-                    <input type="text" name="giagoc" value="{{ $sanpham->sp_giaGoc }}" class="form-control" placeholder="100000">
+                    <input type="text" name="giagoc" value="{{ $product->sp_giaGoc }}" class="form-control" placeholder="100000">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <strong>giá bán:</strong>
                 <div class="form-group">
-                    <input type="text" name="giaban" value="{{ $sanpham->sp_giaBan }}" class="form-control" placeholder="150000">
+                    <input type="text" name="giaban" value="{{ $product->sp_giaBan }}" class="form-control" placeholder="150000">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
