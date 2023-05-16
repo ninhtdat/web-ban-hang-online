@@ -66,11 +66,8 @@
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('product.index') }}">Thêm đơn hàng mới</a>
+                        <a class="collapse-item" href="{{ route('order.create') }}">Thêm đơn hàng mới</a>
                         <a class="collapse-item" href="{{ route('order.index') }}">Tất cả đơn hàng</a>
-                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng chưa thanh toán</a>
-                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng chưa giao</a>
-                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng đã hoàn thành</a>
                     </div>
                 </div>
             </li>
@@ -86,7 +83,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('product.index') }}">Tất cả sản phẩm</a>
                         <a class="collapse-item" href="{{ route('product-type.index') }}">Nhóm sản phẩm</a>
-                        <a class="collapse-item" href="#">Tồn kho</a>
+                        <a class="collapse-item" href="{{ route('inventory')}}">Tồn kho</a>
                     </div>
                 </div>
             </li>

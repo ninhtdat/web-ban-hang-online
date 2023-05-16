@@ -1,70 +1,173 @@
 @extends('backend/layout')
+
 @section('content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    <h2>Danh sách đơn hàng</h2>
+
+    <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4 ">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#tat-ca-don-hang" data-toggle="tab">Tất cả đơn hàng</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#chua-thanh-toan" data-toggle="tab">Chưa thanh toán</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#chua-giao" data-toggle="tab">Chưa giao</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#da-hoan-thanh" data-toggle="tab">Đã hoàn thành</a>
+                          </li>
+                      </ul>
+                      
+                      <div class="tab-content">
+                        <div id="tat-ca-don-hang" class="tab-pane fade show active">
+                          <!-- Nội dung tab Tất cả đơn hàng -->
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Khách hàng</th>
+                                    <th scope="col">Thanh toán</th>
+                                    <th scope="col">Giao hàng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-success">Đã thanh toán</td>
+                                    <td class="text-success">Đã giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-success">Đã thanh toán</td>
+                                    <td class="text-warning">chưa giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-warning">chưa thanh toán</td>
+                                    <td class="text-warning">chưa giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                          
+                        </div>
+                        <div id="chua-thanh-toan" class="tab-pane fade">
+                          <!-- Nội dung tab Chưa thanh toán -->
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Khách hàng</th>
+                                    <th scope="col">Thanh toán</th>
+                                    <th scope="col">Giao hàng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-warning">chưa thanh toán</td>
+                                    <td class="text-warning">chưa giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div id="chua-giao" class="tab-pane fade">
+                          <!-- Nội dung tab Chưa giao -->
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Mã</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Khách hàng</th>
+                                    <th scope="col">Thanh toán</th>
+                                    <th scope="col">Giao hàng</th>
+                                    <th scope="col">Tổng tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-success">Đã thanh toán</td>
+                                    <td class="text-warning">chưa giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">ABC123</a>
+                                    </td>
+                                    <td>20/3/2023</td>
+                                    <td>Nguyễn Thị Hà</td>
+                                    <td class="text-warning">chưa thanh toán</td>
+                                    <td class="text-warning">chưa giao</td>
+                                    <td>154300 vnd</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div id="da-hoan-thanh" class="tab-pane fade">
+                            <!-- Nội dung tab Đã hoàn thành -->
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Mã</th>
+                                        <th scope="col">Ngày tạo</th>
+                                        <th scope="col">Khách hàng</th>
+                                        <th scope="col">Thanh toán</th>
+                                        <th scope="col">Giao hàng</th>
+                                        <th scope="col">Tổng tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#" class="link-primary">ABC123</a>
+                                        </td>
+                                        <td>20/3/2023</td>
+                                        <td>Nguyễn Thị Hà</td>
+                                        <td class="text-success">Đã thanh toán</td>
+                                        <td class="text-success">Đã giao</td>
+                                        <td>154300 vnd</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                          </div>
+                      </div>
+                </div>
+            </div>
         </div>
+
     </div>
-</div>
-{{-- <!-- <h2>Orders table</h2>
-<div class="pull-right mb-2">
-  <a class="btn btn-success" href="{{ route('orders.create') }}"> Add order</a>
-</div> --> --}}
-<div class="table-responsive">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">trạng thái</th>
-                <th scope="col">người nhận</th>
-                <th scope="col">sdt</th>
-                <th scope="col">địa chỉ</th>
-                <th scope="col">tổng tiền</th>
-                <th scope="col">thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1,001</td>
-                <td class=".text-black-50">Đang xử lý</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>154300 vnd</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td class="text-success">đã thanh toán</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>154300 vnd</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td class="text-success">đã thanh toán</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>154300 vnd</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <!-- /.container-fluid -->
 @endsection

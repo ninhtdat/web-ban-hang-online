@@ -1,98 +1,46 @@
 @extends('backend/layout')
 
 @section('content')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-        </div>
+    <h2>Danh sách khach hang</h2>
+    <div class="pull-right mb-2">
+        <a class="btn btn-success" href="{{ route('product.create') }}"> them khach hang moi</a>
     </div>
-</div>
-<h2>customers table</h2>
-<div class="table-responsive">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">họ tên</th>
-                <th scope="col">sdt</th>
-                <th scope="col">địa chỉ</th>
-                <th scope="col">thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-primary">test01@gmail.com</td>
-                <td>HaNguyen</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-primary">test01@gmail.com</td>
-                <td>HaNguyen</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-primary">test01@gmail.com</td>
-                <td>HaNguyen</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-primary">test01@gmail.com</td>
-                <td>HaNguyen</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-primary">test01@gmail.com</td>
-                <td>HaNguyen</td>
-                <td>Nguyễn Thị Hà</td>
-                <td>0982341283</td>
-                <td>Hai Bà Trưng, Hà Nội</td>
-                <td>
-                    <form action="" method="Post">
-                        <a class="btn btn-primary" href="">Detail</a>
-                        <a class="btn btn-warning" href="">Edit</a>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4 ">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">tên</th>
+                                <th scope="col">so dien thoai</th>
+                                <th scope="col">email</th>
+                                <th scope="col">dia chi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" class="link-primary">ABC123</a>
+                                </td>
+                                <td>Nguyễn Thị Hà</td>
+                                <td>0982341283</td>
+                                <td>test01@gmail.com</td>
+                                <td>Hai Bà Trưng, Hà Nội</td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
 @endsection

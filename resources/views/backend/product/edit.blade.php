@@ -49,7 +49,9 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <strong>mô tả sản phẩm</strong>
-                                    <input type="text" name="description" value="{{ $product->description }}" class="form-control" placeholder="">
+                                    {{-- <input type="text" name="description" value="{{ $product->description }}" class="form-control" placeholder=""> --}}
+                                    <textarea type="text" name="description" value="{{ $product->description }}" class="form-control" rows="5" placeholder="" maxlength="200">{{ $product->description }}</textarea>
+
                                 </div>
                             </div>
                             <div class="card-body">

@@ -18,7 +18,7 @@
                                 <div class="form-group">
                                     <strong>tên sản phẩm*</strong>
                                     <input type="text" name="name" class="form-control" placeholder="quần short nam"
-                                        required minlength="1" maxlength="20" >
+                                        required minlength="1" maxlength="20">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -37,14 +37,15 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <strong>số lượng*</strong>
-                                        <input type="text" name="quantity" class="form-control" placeholder="0" required minlength="1" maxlength="5" pattern="[0-9]+">
+                                        <input type="text" name="quantity" class="form-control" placeholder="0" required
+                                            minlength="1" maxlength="5" pattern="[0-9]+">
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
                                     <strong>mô tả sản phẩm</strong>
-                                    <input type="text" name="description" class="form-control" placeholder="" maxlength="200">
+                                    <textarea type="text" name="description" class="form-control" rows="5" placeholder="" maxlength="200"></textarea>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -66,13 +67,15 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <strong>giá gốc (vnd)*</strong>
-                                        <input type="text" name="cost" class="form-control" placeholder="1000" required minlength="1" maxlength="8" pattern="[0-9]+">
+                                        <input type="text" name="cost" class="form-control" placeholder="1000"
+                                            required minlength="1" maxlength="8" pattern="[0-9]+">
                                     </div>
                                 </div>
                                 <div class="card-body">
                                     <div class="form-group">
                                         <strong>giá bán (vnd)*</strong>
-                                        <input type="text" name="price" class="form-control" placeholder="100000" required minlength="1" maxlength="8" pattern="[0-9]+">
+                                        <input type="text" name="price" class="form-control" placeholder="100000"
+                                            required minlength="1" maxlength="8" pattern="[0-9]+">
                                     </div>
                                 </div>
                             </div>

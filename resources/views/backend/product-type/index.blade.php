@@ -17,9 +17,6 @@
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4 ">
-            {{-- <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div> --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -36,24 +33,22 @@
                                     <td>{{ $type->id }}</td>
                                     <td>{{ $type->name }}</td>
                                     <td>
-
                                         <div class="form-row">
-                                            <form>
-
-                                            </form>
-                                            {{-- Delete --}}
-
                                             <form action="{{ route('product-type.destroy', $type->id) }}" method="Post">
+
+                                                @csrf
                                                 <a href="{{ route('product-type.edit', $type->id) }}"
                                                     class="btn btn-info btn-circle">
                                                     <i class="fa fa-wrench"></i>
                                                 </a>
-                                                @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-circle">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
+
+
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

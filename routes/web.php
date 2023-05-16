@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
         return view('backend.order.index');
     })->name('admin');
+    Route::get('/product/inventory', [ProductController::class, 'inventory'])->name('inventory');
 });
 Route::resource('admin/product', ProductController::class);
 Route::resource('admin/product-type', ProductTypeController::class);

@@ -43,7 +43,7 @@
                                     <td>
                                         <div class="card h-100">
                                             <!-- Product image-->
-                                            <img class="card-img" src="{{ asset('storage/images/'.$product->image) }}"  width="160" height="115" alt="...">
+                                            <img class="card-img" src="{{ asset('storage/images/'.$product->image) }}"  width="100" height="75" alt="...">
                                         </div>
                                     </td>
                                     <td>{{ $product->name }}</td>

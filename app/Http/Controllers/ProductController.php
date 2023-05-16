@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+// use Illuminate\Support\Facades\DB;
+
 use App\Models\Product;
 use App\Models\ProductType;
 
@@ -152,5 +154,16 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('product.index')
             ->with('success', 'product has been deleted successfully');
+    }
+
+
+    /**
+     * inventory
+     */
+    public function inventory()
+    {
+        //
+        $products = product::with('type')->paginate(2);
+        return view('backend.product.inventory', compact('products'));
     }
 }
