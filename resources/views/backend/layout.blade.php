@@ -66,11 +66,11 @@
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Thêm đơn hàng mới</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Thêm đơn hàng mới</a>
                         <a class="collapse-item" href="{{ route('order.index') }}">Tất cả đơn hàng</a>
-                        <a class="collapse-item" href="#">Đơn hàng chưa thanh toán</a>
-                        <a class="collapse-item" href="#">Đơn hàng chưa giao</a>
-                        <a class="collapse-item" href="#">Đơn hàng đã hoàn thành</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng chưa thanh toán</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng chưa giao</a>
+                        <a class="collapse-item" href="{{ route('product.index') }}">Đơn hàng đã hoàn thành</a>
                     </div>
                 </div>
             </li>

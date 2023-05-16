@@ -34,7 +34,7 @@
                 <td>154300 vnd</td>
                 <td>
                     <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('admin.order.detail') }}">chi tiết</a>
+                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
                     </form>
                 </td>
             </tr>
@@ -47,7 +47,7 @@
                 <td>154300 vnd</td>
                 <td>
                     <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('admin.order.detail') }}">chi tiết</a>
+                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
                     </form>
                 </td>
             </tr>
@@ -60,7 +60,7 @@
                 <td>154300 vnd</td>
                 <td>
                     <form action="" method="Post">
-                        <a class="btn btn-primary" href="{{ route('admin.order.detail') }}">chi tiết</a>
+                        <a class="btn btn-primary" href="{{ route('order.index') }}">chi tiết</a>
                     </form>
                 </td>
             </tr>

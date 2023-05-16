@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Product;
 use App\Models\ProductType;
 
@@ -39,18 +41,28 @@ class ProductController extends Controller
             'cost' => 'required',
             'price' => 'required',
             'type' => 'required',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
-
         $product = new product;
         $product->name = $request->name;
-        $product->image = $request->image;
         $product->quantity = $request->quantity;
         $product->cost = $request->cost;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->product_type_id = $request->type;
+
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            // $imageName = $request->file('image')->getClientOriginalName();
+            $product->image = $imageName;
+            // $request->image->move(public_path('img'), $imageName);
+            $request->image->storeAs('public/images', $imageName);
+            // Storage::disk('public')->put('images', $imageName);
+        }
+
         $product->save();
+
         return redirect()->route('product.index')
             ->with('success', 'product has been created successfully.');
     }
@@ -87,17 +99,36 @@ class ProductController extends Controller
             'cost' => 'required',
             'price' => 'required',
             'type' => 'required',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
 
         ]);
         $product = product::find($id);
         $product->name = $request->name;
-        $product->image = $request->image;
         $product->quantity = $request->quantity;
         $product->cost = $request->cost;
         $product->price = $request->price;
         $product->description = $request->description;
         $product->product_type_id = $request->type;
+
+        if ($request->hasFile('image')) {
+            //delete picture
+            if ($product->image != null) {
+                $path = storage_path('app/public/images/' . $product->image);
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+
+            $imageName = time() . '.' . $request->image->extension();
+            // $imageName = $request->file('image')->getClientOriginalName();
+            $product->image = $imageName;
+            // $request->image->move(public_path('img'), $imageName);
+            $request->image->storeAs('public/images', $imageName);
+        }
+
         $product->save();
+
+
         return redirect()->route('product.index')
             ->with('success', 'product Has Been updated successfully');
     }
@@ -109,10 +140,17 @@ class ProductController extends Controller
     {
         //
         $product = product::find($id);
+        //delete picture
+        if ($product->image != null) {
+            $path = storage_path('app/public/images/' . $product->image);
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         $product->delete();
         return redirect()->route('product.index')
             ->with('success', 'product has been deleted successfully');
     }
-
-    
 }

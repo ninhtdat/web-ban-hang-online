@@ -12,48 +12,12 @@
     <div class="pull-right mb-2">
         <a class="btn btn-success" href="{{ route('product.create') }}"> Add product</a>
     </div>
-    {{-- <div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th scope="col">hình ảnh</th>
-        <th scope="col">tên</th>
-        <th scope="col">loại</th>
-        <th scope="col">giá gốc</th>
-        <th scope="col">giá bán</th>
-        <th scope="col">thao tác</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($product as $product)
-      <tr>
-        <td>{{ $product->id }}</td>
-        <td>{{ $product->sp_ten }}</td>
-        <td>{{ $product->sp_hinh }}</td>
-        <td>{{ $product->sp_giaGoc }}</td>
-        <td>{{ $product->sp_giaBan }}</td>
-        <td>{{ $product->l_ma }}</td>
-        <td>
-          <form action="{{ route('product.destroy',$product->id) }}" method="Post">
-            <a class="btn btn-primary" href="{{ route('product.edit',$product->id) }}">Edit</a>
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
-</div> --}}
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4 ">
-            {{-- <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div> --}}
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
@@ -76,18 +40,11 @@
                             @foreach ($product as $product)
                                 <tr>
                                     <td>{{ $product->id }}</td>
-                                    {{-- <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" /> --}}
-                                    {{-- src="{{ asset('backend/img/admin.jpg') }} --}}
-                                    {{-- <td>{{ $product->image }}</td> --}}
-                                    {{-- <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" /> --}}
-                                    {{-- src="{{ asset('backend/img/admin.jpg') }} --}}
                                     <td>
                                         <div class="card h-100">
                                             <!-- Product image-->
-                                            <img class="card-img" src="{{ asset('img/blog-03.jpg') }}"  width="160" height="115" alt="...">
-                                            
+                                            <img class="card-img" src="{{ asset('storage/images/'.$product->image) }}"  width="160" height="115" alt="...">
                                         </div>
-                                        {{-- <img class="card-img-top " style="vertical-align: middle;" src="{{ asset('img/blog-03.jpg') }}"/> --}}
                                     </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>

@@ -12,7 +12,7 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        return view('backend.customers.index');
+        return view('backend.customer.index');
         
     }
 

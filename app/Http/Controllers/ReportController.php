@@ -12,7 +12,7 @@ class ReportController extends Controller
     public function index()
     {
         //
-        return view('backend.reports.index');
+        return view('backend.report.index');
     }
 
     /**
