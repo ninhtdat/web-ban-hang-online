@@ -56,17 +56,17 @@
             </div> --}}
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">hình ảnh</th>
+                                <th scope="col" style="max-width: 20%;" >hình ảnh</th>
                                 <th scope="col">tên</th>
                                 <th scope="col">loại</th>
-                                <th scope="col">so luong</th>
-                                <th scope="col">giá gốc</th>
-                                <th scope="col">giá bán</th>
-                                <th scope="col">mo ta</th>
+                                <th scope="col">số lượng</th>
+                                <th scope="col">giá gốc (vnd)</th>
+                                <th scope="col">giá bán (vnd)</th>
+                                <th scope="col">mô tả</th>
                                 <th scope="col">created at</th>
                                 <th scope="col">updated at</th>
                                 <th scope="col">thao tác</th>
@@ -76,7 +76,19 @@
                             @foreach ($product as $product)
                                 <tr>
                                     <td>{{ $product->id }}</td>
-                                    <td>{{ $product->image }}</td>
+                                    {{-- <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" /> --}}
+                                    {{-- src="{{ asset('backend/img/admin.jpg') }} --}}
+                                    {{-- <td>{{ $product->image }}</td> --}}
+                                    {{-- <img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" /> --}}
+                                    {{-- src="{{ asset('backend/img/admin.jpg') }} --}}
+                                    <td>
+                                        <div class="card h-100">
+                                            <!-- Product image-->
+                                            <img class="card-img" src="{{ asset('img/blog-03.jpg') }}"  width="160" height="115" alt="...">
+                                            
+                                        </div>
+                                        {{-- <img class="card-img-top " style="vertical-align: middle;" src="{{ asset('img/blog-03.jpg') }}"/> --}}
+                                    </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>
                                     <td>{{ $product->quantity }}</td>
