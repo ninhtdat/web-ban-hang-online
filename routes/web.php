@@ -6,7 +6,9 @@ use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReportController;
-use GuzzleHttp\Middleware;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\CheckAdmin;
+// use App\Http\Middleware\EnsureTokenIsValid;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,29 +20,31 @@ use GuzzleHttp\Middleware;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//backend
-
-// Route::middleware('auth:sanpham')->get('/auth/login', function () {
-//     return view('auth.login');
-// });
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
-        return view('backend.order.index');
-    })->name('admin');
-    Route::get('/product/inventory', [ProductController::class, 'inventory'])->name('inventory');
-});
-Route::resource('admin/product', ProductController::class);
-Route::resource('admin/product-type', ProductTypeController::class);
-Route::resource('admin/customer', CustomerController::class);
-Route::resource('admin/order', OrderController::class);
-Route::resource('admin/report', ReportController::class);
-
 //frontend
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('frontend.homepage');
 })->name('homepage');
+Route::get('/', function () {
+    return view('frontend.homepage');
+});
 Route::get('/product', function () {
     return view('frontend.product');
 })->name('product');
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
-// DNS_AAAA
+//backend
+Route::middleware([Authenticate::class, CheckAdmin::class])->group(function () {
+
+    Route::resource('admin/product', ProductController::class);
+    Route::resource('admin/product-type', ProductTypeController::class);
+    Route::resource('admin/customer', CustomerController::class);
+    Route::resource('admin/order', OrderController::class);
+    Route::resource('admin/report', ReportController::class);
+    Route::get('product/inventory', [ProductController::class, 'inventory'])->name('inventory');
+    Route::get('/admin', function() {
+        return view('backend.order.index');
+    })->name('admin');
+});
+require __DIR__ . '/auth.php';

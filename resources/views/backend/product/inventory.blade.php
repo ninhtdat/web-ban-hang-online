@@ -55,9 +55,9 @@
 
                 </table>
 
-                @if (method_exists($products, 'links'))
+                {{-- @if (method_exists($products, 'links')) --}}
                     {{ $products->links('pagination') }}
-                @endif
+                {{-- @endif --}}
 
             </div>
         </div>
