@@ -43,3 +43,4 @@ Route::get('/product', function () {
     return view('frontend.product');
 })->name('product');
 
+// DNS_AAAA
