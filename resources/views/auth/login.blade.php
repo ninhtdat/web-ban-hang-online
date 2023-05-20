@@ -32,7 +32,9 @@
                                     <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
                                     <hr>
                                 </form>
-
+                                @foreach ($errors->all() as $error)
+                                    <li class="alert alert-danger">{{ $error }}</li>
+                                @endforeach
                                 <div class="text-center">
                                     <a class="small" href="{{ route('register') }}">Create an Account!</a>
                                 </div>

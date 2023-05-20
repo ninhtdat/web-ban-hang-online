@@ -76,6 +76,9 @@
                                         <strong>giá bán (vnd)*</strong>
                                         <input type="text" name="price" class="form-control" placeholder="100000"
                                             required minlength="1" maxlength="8" pattern="[0-9]+">
+                                        @error('price')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>

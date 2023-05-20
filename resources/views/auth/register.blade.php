@@ -41,10 +41,10 @@
                                         Register
                                     </button>
                                     <hr>
-
-
                                 </form>
-
+                                @foreach ($errors->all() as $error)
+                                    <li class="alert alert-danger">{{ $error }}</li>
+                                @endforeach
 
                                 <div class="text-center">
                                     <a class="small" href="{{ route('login') }}">Login!</a>

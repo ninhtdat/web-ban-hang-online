@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
+            $table->unsignedBigInteger('account_id')->nullable();
             $table->timestamps();
         });
     }

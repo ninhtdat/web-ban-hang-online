@@ -22,10 +22,10 @@ use App\Http\Middleware\CheckAdmin;
 */
 //frontend
 Route::get('/home', function () {
-    return view('frontend.homepage');
+    return view('frontend.homepage.index');
 })->name('homepage');
 Route::get('/', function () {
-    return view('frontend.homepage');
+    return view('frontend.homepage.index');
 });
 Route::get('/product', function () {
     return view('frontend.product');

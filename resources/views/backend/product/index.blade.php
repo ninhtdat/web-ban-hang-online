@@ -41,11 +41,11 @@
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>
-                                        <div class="card h-100">
+                                        <div class="">
                                             <!-- Product image-->
-                                            <img class="card-img" src="{{ asset('storage/images/'.$product->image) }}"  width="100" height="75" alt="...">
+                                            <img class="rounded" src="{{ asset('storage/images/'.$product->image) }}"  width="100" height="75" alt="...">
                                         </div>
-                                    </td>
+                                    </td>img
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>
                                     <td>{{ $product->quantity }}</td>
