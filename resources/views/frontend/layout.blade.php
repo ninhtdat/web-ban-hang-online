@@ -19,20 +19,22 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">SHOP</a>
+            <a class="navbar-brand" href="{{ route('homepage') }}">SHOP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link " aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link " aria-current="page"
+                            href="{{ route('homepage') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('product') }}">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
@@ -50,20 +52,21 @@
                     </li> --}}
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark mr-5" type="submit">
+                    <a href="{{ route('cart') }}" class="btn btn-outline-dark mr-5" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
+                    </a>
                 </form>
 
                 @auth
                     <!-- Example single danger button -->
                     <div class="btn-group">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Hello, {{ Auth::user()->name }}
-                        </button>
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, {{ Auth::user()->name }}</span>
+                            <img class="rounded-circle" height="40" src="{{ asset('backend/img/admin.jpg') }}">
+                        </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Profile</a>
                             <a class="dropdown-item" href="#">history</a>
@@ -73,10 +76,9 @@
                         </div>
                     </div>
                 @endauth
-
                 @guest
                     @if (Route::has('login'))
-                        <a href="{{ route('login') }}" class="btn btn-outline-dark mr-2">
+                        <a href="{{ route('login') }}" class="btn btn-outline-dark mr-2" >
                             <i>Login</i>
                         </a>
                     @endif
@@ -90,15 +92,7 @@
             </div>
         </div>
     </nav>
-    <!-- Header-->
-    <header class="bg-dark py-5">
-        <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">Shop in style</h1>
-                <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-            </div>
-        </div>
-    </header>
+
 
     @yield('content')
 

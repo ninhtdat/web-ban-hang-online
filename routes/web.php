@@ -30,10 +30,21 @@ Route::get('/', function () {
 Route::get('/product', function () {
     return view('frontend.product');
 })->name('product');
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
-
+Route::get('/product-detail', function () {
+    return view('frontend.shop.product-detail');
+})->name('product-detail');
+Route::get('/cart', function () {
+    return view('frontend.shop.cart');
+})->name('cart');
+Route::get('/pay', function () {
+    return view('frontend.shop.pay');
+})->name('pay');
+Route::get('/order-complete', function () {
+    return view('frontend.shop.complete');
+})->name('complete');
+Route::get('/product', function () {
+    return view('frontend.shop.product');
+})->name('product');
 //backend
 Route::middleware([Authenticate::class, CheckAdmin::class])->group(function () {
 
@@ -43,7 +54,7 @@ Route::middleware([Authenticate::class, CheckAdmin::class])->group(function () {
     Route::resource('admin/order', OrderController::class);
     Route::resource('admin/report', ReportController::class);
     Route::get('product/inventory', [ProductController::class, 'inventory'])->name('inventory');
-    Route::get('/admin', function() {
+    Route::get('/admin', function () {
         return view('backend.order.index');
     })->name('admin');
 });
