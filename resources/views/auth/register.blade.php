@@ -30,6 +30,11 @@
                                             placeholder="Enter Email Address...">
                                     </div>
                                     <div class="form-group">
+                                        <input type="number" id="phone" name="phone"
+                                            class="form-control form-control-user" aria-describedby="emailHelp"
+                                            placeholder="Enter phone number...">
+                                    </div>
+                                    <div class="form-group">
                                         <input type="password" id="password" name="password"
                                             class="form-control form-control-user" placeholder="Password">
                                     </div>

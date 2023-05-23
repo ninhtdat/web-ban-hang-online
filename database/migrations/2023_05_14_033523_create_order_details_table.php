@@ -9,15 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    
+
     public function up(): void
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->string('product_id_list', 50);
-            $table->string('product_quantity_list', 100);
+
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
+
+            $table->unsignedInteger('quantity');
+
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders');
+
             $table->timestamps();
         });
     }

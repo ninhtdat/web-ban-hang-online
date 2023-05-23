@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Customer;
 
 class CartController extends Controller
 {
@@ -13,9 +14,9 @@ class CartController extends Controller
     public function index(Request $request)
     {
         //
-        $cart = $request->session()->get('cart');
+        // $cart = $request->session()->get('cart');
         // $request->session()->forget('cart');
-        return view('frontend.shop.cart', compact('cart'));
+        return view('frontend.shop.cart');
     }
 
     /**
@@ -24,11 +25,11 @@ class CartController extends Controller
     public function create($id)
     {
         $product = Product::findOrFail($id);
-          
+
         $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
-            $cart[$id]['quantity'] ++;
+
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
                 "id" => $id,
@@ -39,7 +40,7 @@ class CartController extends Controller
                 "image" => $product->image
             ];
         }
-          
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
@@ -50,14 +51,19 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        // $request->session()->forget('cart');
-        // $cart = $request->session()->get('cart');
+        // $request->validate([
+        //     'name' => 'required',
+        //     'phone' => 'required',
+        //     'address' => 'required',
+        //     'email' => 'required',
+        // ]);
+        // $customer = new Customer;
+        // $customer->name = $request->name;
+        // $customer->phone = $request->phone;
+        // $customer->email = $request->email;
+        // $customer->address = $request->address;
+        // $customer->save();
 
-        array_push($cart, ['giày dép', 8]);
-
-        $request->session()->put('cart', $cart);
-
-        return redirect()->route('product-details');
     }
 
     /**
@@ -91,28 +97,26 @@ class CartController extends Controller
     {
         //
         $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
+
+        if (isset($cart[$id])) {
             $cart[$id]['quantity'] = $request->quantity;
         }
-          
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product add to cart successfully!');
-
-        
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function delete($id)
-    {     
+    {
         $cart = session()->get('cart', []);
-  
-        if(isset($cart[$id])) {
+
+        if (isset($cart[$id])) {
             unset($cart[$id]);
         }
-          
+
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product remove to cart successfully!');
     }

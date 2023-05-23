@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('address');
-            $table->unsignedBigInteger('account_id')->nullable();
+            $table->string('name', 100);
+            $table->unsignedBigInteger('phone');
+            $table->string('email',50)->unique();
             $table->timestamps();
         });
     }
