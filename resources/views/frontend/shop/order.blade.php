@@ -12,33 +12,62 @@
     <section class="h-100">
         <div class="container py-5">
             <form method="post" action="{{ route('order') }}">
+                @csrf
                 <div class="row d-flex justify-content-center my-4">
                     <div class="col-md-8">
                         <div class="card mb-4">
                             <div class="card-header py-3">
-                                <h5 class="mb-0">Thong tin thanh toan</h5>
+                                <h5 class="mb-0">Thông tin cá nhân</h5>
                             </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="name">Name</label>
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
-                                        </div>
-                                        <div class="col">
-                                            <label for="name">Phone</label>
-                                            <input type="number" name="phone" id="phone" class="form-control" placeholder="Phone number" min="100000000" max="99999999999" required>
+                            @guest
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="name">Name</label>
+                                                <input type="text" name="name" id="name" class="form-control"
+                                                    placeholder="Name" required>
+                                            </div>
+                                            <div class="col">
+                                                <label for="name">Phone</label>
+                                                <input type="number" name="phone" id="phone" class="form-control"
+                                                    placeholder="Phone number" min="100000000" max="99999999999" required>
+                                            </div>
                                         </div>
                                     </div>
+                                    <hr class="my-4" />
+                                    <label for="name">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control"
+                                        placeholder="Example@xyz.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+                                    <hr class="my-4" />
+                                    <label for="name">Address</label>
+                                    <input type="text" name="address" id="address" class="form-control"
+                                        placeholder="Input address here" required>
+                                    <hr class="my-4" />
                                 </div>
-                                <hr class="my-4" />
-                                <label for="name">Address</label>
-                                <input type="text" name="address" id="address" class="form-control" placeholder="Input address here" required>
-                                <hr class="my-4" />
-                                <label for="name">Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="Example@xyz.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                                <hr class="my-4" />
-                            </div>
+                            @endguest
+
+                            @auth
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <strong class="mr-2">Name:</strong>
+                                        <p>{{ Auth::user()->name }}</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <strong class="mr-2">Email:</strong>
+                                        <p>{{ Auth::user()->email }}</p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <strong class="mr-2">Phone:</strong>
+                                        <p>{{ Auth::user()->phone }}</p>
+                                    </div>
+                                    <label for="name">Address</label>
+                                    <input type="text" name="address" id="address" class="form-control"
+                                        placeholder="Input address here" required>
+                                    <hr class="my-4" />
+                                </div>
+                            @endauth
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -145,7 +174,8 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                         </div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">

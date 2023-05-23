@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Customer;
+use App\Models\Order;
+use App\Models\OrderDetail;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -51,18 +54,58 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-        // $request->validate([
-        //     'name' => 'required',
-        //     'phone' => 'required',
-        //     'address' => 'required',
-        //     'email' => 'required',
-        // ]);
-        // $customer = new Customer;
-        // $customer->name = $request->name;
-        // $customer->phone = $request->phone;
-        // $customer->email = $request->email;
-        // $customer->address = $request->address;
-        // $customer->save();
+        if (Auth::check()) {
+            // Đã đăng nhập.
+            $request->validate([
+                'address' => 'required',
+            ]);
+            $order = new Order();
+            $order->pay = false;
+            $order->delivery = false;
+            $order->address = $request->address;
+            $order->user_id = Auth::user()->id;
+            $order->save();
+
+            foreach (session('cart') as $id=>$product) {
+                $detail = new OrderDetail;
+                $detail->product_id = $product['id'];
+                $detail->order_id = $order->id;
+                $detail->quantity = $product['quantity'];
+                $detail->save();
+            }
+
+        } else {
+            // Chưa đăng nhập.
+            $request->validate([
+                'name' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'email' => 'required',
+            ]);
+            $customer = new Customer();
+            $customer->name = $request->name;
+            $customer->phone = $request->phone;
+            $customer->email = $request->email;
+            $customer->save();
+
+            $order = new Order();
+            $order->pay = false;
+            $order->delivery = false;
+            $order->address = $request->address;
+            $order->customer_id = $customer->id;
+            $order->save();
+
+            foreach (session('cart') as $id=>$product) {
+                $detail = new OrderDetail;
+                $detail->product_id = $product['id'];
+                $detail->order_id = $order->id;
+                $detail->quantity = $product['quantity'];
+                $detail->save();
+            }
+        }
+
+        $request->session()->forget('cart');
+        return view ('frontend.shop.complete');
 
     }
 

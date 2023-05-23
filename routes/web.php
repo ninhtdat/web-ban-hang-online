@@ -59,9 +59,9 @@ Route::get('/product-details', function () {
 
 
 
-Route::get('/order-complete', function () {
+Route::get('/order-completed', function () {
     return view('frontend.shop.complete');
-})->name('complete');
+})->name('completed');
 
 
 //backend
