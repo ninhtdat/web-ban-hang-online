@@ -31,7 +31,7 @@ class ProductTypeController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:App\Models\ProductType,name',
         ]);
         $ProductType = new ProductType;
         $ProductType->name = $request->name;
@@ -67,7 +67,8 @@ class ProductTypeController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:App\Models\ProductType,name,'.$id.',id', 
+            // 'name' => 'required|unique:App\Models\ProductType,name'.$id,
         ]);
         $ProductType = ProductType::find($id);
         $ProductType->name = $request->name;

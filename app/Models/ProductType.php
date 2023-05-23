@@ -12,7 +12,7 @@ class ProductType extends Model
     use HasFactory;
     protected $table = 'product_types';
     protected $fillable = [
-        'name',
+        'name'
     ];
     
     public function products(): HasMany

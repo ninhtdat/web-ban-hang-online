@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->boolean('pay');
             $table->boolean('delivery');
-            $table->unsignedBigInteger('customer_id');
+            $table->string('address', 100);
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
