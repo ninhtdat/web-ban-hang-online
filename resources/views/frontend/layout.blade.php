@@ -34,38 +34,26 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link " aria-current="page"
                             href="{{ route('homepage') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('product') }}">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('products') }}">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    {{-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li> --}}
                 </ul>
                 <form class="d-flex">
-                    <a href="{{ route('cart') }}" class="btn btn-outline-dark mr-5" type="submit">
+                    <a href="{{ route('cart') }}" class="btn btn-outline-primary mr-5" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <span
+                            class="badge bg-primary text-white ms-1 rounded-pill">{{ count((array) session('cart')) }}</span>
                     </a>
                 </form>
 
                 @auth
                     <!-- Example single danger button -->
                     <div class="btn-group">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hello, {{ Auth::user()->name }}</span>
-                            <img class="rounded-circle" height="40" src="{{ asset('backend/img/admin.jpg') }}">
+                        <a class="nav-link dropdown-toggle show" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="true">
+                            <strong class="text-info">Hello, {{ Auth::user()->name }}</strong>
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Profile</a>
@@ -78,7 +66,7 @@
                 @endauth
                 @guest
                     @if (Route::has('login'))
-                        <a href="{{ route('login') }}" class="btn btn-outline-dark mr-2" >
+                        <a href="{{ route('login') }}" class="btn btn-outline-dark mr-2">
                             <i>Login</i>
                         </a>
                     @endif
@@ -96,12 +84,6 @@
 
     @yield('content')
 
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-        </div>
-    </footer>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -125,6 +107,8 @@
             </div>
         </div>
     </div>
+
+    @yield('scripts')
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

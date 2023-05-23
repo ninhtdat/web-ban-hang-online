@@ -162,8 +162,22 @@ class ProductController extends Controller
      */
     public function inventory()
     {
-        //
-        $products = product::with('type')->paginate(2);
+        //->paginate(5)
+        $products = product::all();
         return view('backend.product.inventory', compact('products'));
+    }
+
+    public function index_customer()
+    {
+        //
+        $products = product::all();
+        return view('frontend.shop.product', compact('products'));
+    }
+
+    public function index_home()
+    {
+        //
+        $products = product::orderBy('quantity', 'desc')->take(8)->get();
+        return view('frontend.homepage.index', compact('products'));
     }
 }

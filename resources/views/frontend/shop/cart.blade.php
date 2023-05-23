@@ -1,180 +1,232 @@
 @extends('frontend/layout')
 
 @section('content')
-    <section class="h-100">
+
+    <section class="h-100 gradient-custom">
         <div class="container py-5">
-            <div class="row d-flex justify-content-center my-4">
-                <div class="col-md-8">
-                    <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h5 class="mb-0">Cart - 2 items</h5>
+            @if (session()->has('cart'))
+                <div class="row d-flex justify-content-center my-4">
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-header py-3">
+                                <h5 class="mb-0">Cart</h5>
+                            </div>
+                            <div class="card-body">
+                                @php
+                                    $total = 0;
+                                    $sum = 0;
+                                @endphp
+                                @foreach ($cart as $id => $product)
+                                    @php
+                                        $total += $product['price'] * $product['quantity'];
+                                        $sum += $product['quantity'];
+                                    @endphp
+                                    <!-- Single item -->
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                            <!-- Image -->
+                                            <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                                data-mdb-ripple-color="light">
+                                                <img src="{{ asset('storage/images/' . $product['image']) }}" class="w-100"
+                                                    alt="Blue Jeans Jacket" />
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- Image -->
+                                        </div>
+
+                                        <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Data -->
+                                            <p><strong>{{ $product['name'] }}</strong></p>
+                                            <p>Type: {{ $product['type'] }}</p>
+                                            <a href="{{ route('cart.delete', $product['id']) }}"
+                                                class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                                                title="Remove item">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                            <!-- Data -->
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                            <!-- Quantity -->
+                                            <div class="d-flex mb-4" style="max-width: 300px">
+
+                                                <form method="post" action="{{ route('cart.update', $product['id'] ) }}">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="form-row">
+                                                        <div class="form-outline" style="max-width: 100px">
+                                                            <input id="form1" min="0" name="quantity"
+                                                                value="{{ $product['quantity'] }}" type="number"
+                                                                class="form-control" />
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary px-3 ms-2">Save</button>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                            <!-- Quantity -->
+
+                                            <!-- Price -->
+                                            <p class="text-start text-md-center">
+                                                <strong>{{ $product['price'] }} (VND)</strong>
+                                            </p>
+                                            <!-- Price -->
+                                        </div>
+                                    </div>
+                                    <!-- Single item -->
+
+                                    <hr class="my-4" />
+                                @endforeach
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <!-- Single item -->
-                            <div class="row">
-                                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                    <!-- Image -->
-                                    <div class="bg-image hover-overlay hover-zoom ripple rounded"
-                                        data-mdb-ripple-color="light">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/12a.webp"
-                                            class="w-100" alt="Blue Jeans Jacket" />
-                                        <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                        </a>
-                                    </div>
-                                    <!-- Image -->
-                                </div>
 
-                                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Data -->
-                                    <p><strong>Blue denim shirt</strong></p>
-                                    <p>Color: blue</p>
-                                    <p>Size: M</p>
-                                    <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
-                                        data-mdb-toggle="tooltip" title="Remove item">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                                        title="Move to the wish list">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <!-- Data -->
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Quantity -->
-                                    <div class="d-flex mb-4" style="max-width: 300px">
-                                        <button class="btn btn-primary px-3 me-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                        <div class="form-outline">
-                                            <input id="form1" min="0" name="quantity" value="1"
-                                                type="number" class="form-control" />
-                                            {{-- <label class="form-label" for="form1">Quantity</label> --}}
-                                        </div>
-
-                                        <button class="btn btn-primary px-3 ms-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <!-- Quantity -->
-
-                                    <!-- Price -->
-                                    <p class="text-start text-md-center">
-                                        <strong>$17.99</strong>
-                                    </p>
-                                    <!-- Price -->
-                                </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-header py-3">
+                                <h5 class="mb-0">Summary</h5>
                             </div>
-                            <!-- Single item -->
-
-                            <hr class="my-4" />
-
-                            <!-- Single item -->
-                            <div class="row">
-                                <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                    <!-- Image -->
-                                    <div class="bg-image hover-overlay hover-zoom ripple rounded"
-                                        data-mdb-ripple-color="light">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Vertical/13a.webp"
-                                            class="w-100" />
-                                        <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
-                                        </a>
-                                    </div>
-                                    <!-- Image -->
-                                </div>
-
-                                <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Data -->
-                                    <p><strong>Red hoodie</strong></p>
-                                    <p>Color: red</p>
-                                    <p>Size: M</p>
-
-                                    <button type="button" class="btn btn-primary btn-sm me-1 mb-2"
-                                        data-mdb-toggle="tooltip" title="Remove item">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                                        title="Move to the wish list">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <!-- Data -->
-                                </div>
-
-                                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                    <!-- Quantity -->
-                                    <div class="d-flex mb-4" style="max-width: 300px">
-                                        <button class="btn btn-primary px-3 me-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-
-                                        <div class="form-outline">
-                                            <input id="form1" min="0" name="quantity" value="1"
-                                                type="number" class="form-control" />
-                                            {{-- <label class="form-label" for="form1">Quantity</label> --}}
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        Products
+                                        <span>{{ $total }} VND</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        Shipping
+                                        <span>Gratis</span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                        <div>
+                                            <strong>Total amount</strong>
+                                            <strong>
+                                                <p class="mb-0">(including VAT)</p>
+                                            </strong>
                                         </div>
+                                        <span><strong>{{ $total }} VND</strong></span>
+                                    </li>
+                                </ul>
 
-                                        <button class="btn btn-primary px-3 ms-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                            <i class="fas fa-plus"></i>
-                                        </button>
-                                    </div>
-                                    <!-- Quantity -->
-
-                                    <!-- Price -->
-                                    <p class="text-start text-md-center">
-                                        <strong>$17.99</strong>
-                                    </p>
-                                    <!-- Price -->
-                                </div>
+                                <button type="button" class="btn btn-primary btn-lg btn-block">
+                                    Go to order
+                                </button>
                             </div>
-                            <!-- Single item -->
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h5 class="mb-0">Summary</h5>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                                    Products
-                                    <span>$53.98</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                                    Shipping
-                                    <span>Gratis</span>
-                                </li>
-                                <li
-                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                    <div>
-                                        <strong>Total amount</strong>
-                                        <strong>
-                                            <p class="mb-0">(including VAT)</p>
-                                        </strong>
-                                    </div>
-                                    <span><strong>$53.98</strong></span>
-                                </li>
-                            </ul>
+            @else
+                <h3 class="text-warning text-center"> No item </h3>
+                <div class="pt-5">
+                    <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
+                                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                </div>
+        </div>
+        @endif
+    </section>
 
-                            <a href=" {{ route('pay') }}" class="btn btn-primary btn-lg btn-block">
-                                Go to checkout
-                            </a>
+
+    {{-- 
+    <section class="h-100 h-custom" style="background-color: #ececef;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12">
+                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                        <div class="card-body p-0">
+                            @if (session()->has('cart'))
+                                <div class="row g-0">
+                                    <div class="col-lg-8">
+                                        <div class="p-5">
+                                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                                <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                            </div>
+                                            <hr class="my-4">
+                                            @php
+                                                $total = 0;
+                                                $sum = 0;
+                                            @endphp
+                                            @foreach ($cart as $id => $product)
+                                                @php
+                                                    $total += $product['price'] * $product['quantity'];
+                                                    $sum += $product['quantity'];
+                                                @endphp
+                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                                        <img src="{{ asset('storage/images/' . $product['image']) }}"
+                                                            class="img-fluid rounded-3" alt="image error!">
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                        <h6 class="text-muted">{{ $product['type'] }}</h6>
+                                                        <h6 class="text-black mb-0">{{ $product['name'] }}</h6>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+
+                                                        <input id="form1" min="0" name="quantity"
+                                                            value="{{ $product['quantity'] }}" type="number"
+                                                            class="form-control form-control-sm update-cart" />
+
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                        <h7 class="mb-0">{{ $product['price'] * $product['quantity'] }}
+                                                            VND
+                                                        </h7>
+                                                    </div>
+                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                        <a href="{{ route('cart.delete', $product['id']) }}"
+                                                            class="text-muted "><i class="fas fa-times"></i></a>
+                                                    </div>
+                                                </div>
+
+                                                <hr class="my-4">
+                                            @endforeach
+
+                                            <div class="pt-5">
+                                                <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
+                                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 bg-grey">
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <h5 class="text-uppercase">items: </h5>
+                                                <h5>{{ $sum }}</h5>
+                                            </div>
+
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between mb-5">
+                                                <h5 class="text-uppercase">Total price</h5>
+                                                <h5>{{ $total }} (VND)</h5>
+                                            </div>
+
+                                            <button type="button" class="btn btn-dark btn-block btn-lg"
+                                                data-mdb-ripple-color="dark">Go to order</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <h3 class="text-warning text-center"> No item </h3>
+                                <div class="pt-5">
+                                    <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
+                                                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </section> --}}
     <!-- Related items section-->
     <section class="py-5 bg-light">
         <div class="container px-4 px-lg-5 mt-5">
@@ -183,8 +235,7 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                            alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -208,8 +259,7 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                         </div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                            alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -242,8 +292,7 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                         </div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                            alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">

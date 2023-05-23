@@ -45,7 +45,7 @@
                                             <!-- Product image-->
                                             <img class="rounded" src="{{ asset('storage/images/'.$product->image) }}"  width="100" height="75" alt="...">
                                         </div>
-                                    </td>img
+                                    </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>
                                     <td>{{ $product->quantity }}</td>

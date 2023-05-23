@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReportController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAdmin;
@@ -27,24 +28,41 @@ Route::get('/home', function () {
 Route::get('/', function () {
     return view('frontend.homepage.index');
 });
-Route::get('/product', function () {
-    return view('frontend.product');
-})->name('product');
-Route::get('/product-detail', function () {
-    return view('frontend.shop.product-detail');
-})->name('product-detail');
-Route::get('/cart', function () {
-    return view('frontend.shop.cart');
-})->name('cart');
+Route::get('/home', [ProductController::class, 'index_home'])->name('homepage');
+Route::get('/', [ProductController::class, 'index_home']);
+
+
+
+
+// Route::post('/product-details', [CartController::class, 'create']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::patch('/update-cart/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::get('delete-from-cart/{id}', [CartController::class, 'delete'])->name('cart.delete');
+
+// Route::post('/cart', [CartController::class, 'edit'])->name('cart.edit');
+// Route::post('/cart/{name}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+Route::get('/products', [ProductController::class, 'index_customer'])->name('products');
+
+Route::get('/add-to-cart/{id}', [CartController::class, 'create'])->name('cart.add');
+
+
+
+Route::get('/product-details', function () {
+    return view('frontend.shop.product-details');
+})->name('product-details');
+
+
 Route::get('/pay', function () {
     return view('frontend.shop.pay');
 })->name('pay');
+
+
 Route::get('/order-complete', function () {
     return view('frontend.shop.complete');
 })->name('complete');
-Route::get('/product', function () {
-    return view('frontend.shop.product');
-})->name('product');
+
+
 //backend
 Route::middleware([Authenticate::class, CheckAdmin::class])->group(function () {
 
