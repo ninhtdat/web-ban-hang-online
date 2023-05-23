@@ -39,7 +39,7 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:App\Models\Product,name',
             'cost' => 'required',
             'price' => 'required',
             'type' => 'required',
@@ -97,7 +97,7 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:App\Models\Product,name,'.$id.',id',
             'cost' => 'required',
             'price' => 'required',
             'type' => 'required',

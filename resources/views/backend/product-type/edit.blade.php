@@ -32,5 +32,8 @@
                 <button type="submit" class="btn btn-primary ml-3">Submit</button>
             </div>
         </form>
+        @foreach ($errors->all() as $error)
+            <li class="alert alert-danger">{{ $error }}</li>
+        @endforeach
     </div>
 @endsection

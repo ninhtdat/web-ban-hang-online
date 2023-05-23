@@ -46,16 +46,17 @@ Route::get('/products', [ProductController::class, 'index_customer'])->name('pro
 
 Route::get('/add-to-cart/{id}', [CartController::class, 'create'])->name('cart.add');
 
+Route::get('/order', function () {
+    return view('frontend.shop.order');
+})->name('order');
+
+Route::post('/order', [CartController::class, 'store'])->name('order');
 
 
 Route::get('/product-details', function () {
     return view('frontend.shop.product-details');
 })->name('product-details');
 
-
-Route::get('/pay', function () {
-    return view('frontend.shop.pay');
-})->name('pay');
 
 
 Route::get('/order-complete', function () {

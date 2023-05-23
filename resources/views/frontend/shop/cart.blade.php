@@ -16,7 +16,7 @@
                                     $total = 0;
                                     $sum = 0;
                                 @endphp
-                                @foreach ($cart as $id => $product)
+                                @foreach (session('cart') as $id => $product)
                                     @php
                                         $total += $product['price'] * $product['quantity'];
                                         $sum += $product['quantity'];
@@ -53,7 +53,7 @@
                                             <!-- Quantity -->
                                             <div class="d-flex mb-4" style="max-width: 300px">
 
-                                                <form method="post" action="{{ route('cart.update', $product['id'] ) }}">
+                                                <form method="post" action="{{ route('cart.update', $product['id']) }}">
                                                     @csrf
                                                     @method('PATCH')
                                                     <div class="form-row">
@@ -62,7 +62,8 @@
                                                                 value="{{ $product['quantity'] }}" type="number"
                                                                 class="form-control" />
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary px-3 ms-2">Save</button>
+                                                        <button type="submit"
+                                                            class="btn btn-primary px-3 ms-2">Save</button>
                                                     </div>
                                                 </form>
 
@@ -112,9 +113,15 @@
                                     </li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary btn-lg btn-block">
-                                    Go to order
-                                </button>
+                                @if (!empty(session('cart')))
+                                    <a href="{{ route('order') }}" class="btn btn-primary btn-lg btn-block">
+                                        Go to order
+                                    </a>
+                                @else
+                                    <a href="{{ route('products') }}" class="btn btn-primary btn-lg btn-block">
+                                        Go to shop
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -130,107 +137,10 @@
     </section>
 
 
-    {{-- 
-    <section class="h-100 h-custom" style="background-color: #ececef;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12">
-                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-                        <div class="card-body p-0">
-                            @if (session()->has('cart'))
-                                <div class="row g-0">
-                                    <div class="col-lg-8">
-                                        <div class="p-5">
-                                            <div class="d-flex justify-content-between align-items-center mb-5">
-                                                <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                                            </div>
-                                            <hr class="my-4">
-                                            @php
-                                                $total = 0;
-                                                $sum = 0;
-                                            @endphp
-                                            @foreach ($cart as $id => $product)
-                                                @php
-                                                    $total += $product['price'] * $product['quantity'];
-                                                    $sum += $product['quantity'];
-                                                @endphp
-                                                <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="{{ asset('storage/images/' . $product['image']) }}"
-                                                            class="img-fluid rounded-3" alt="image error!">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
-                                                        <h6 class="text-muted">{{ $product['type'] }}</h6>
-                                                        <h6 class="text-black mb-0">{{ $product['name'] }}</h6>
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-
-                                                        <input id="form1" min="0" name="quantity"
-                                                            value="{{ $product['quantity'] }}" type="number"
-                                                            class="form-control form-control-sm update-cart" />
-
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h7 class="mb-0">{{ $product['price'] * $product['quantity'] }}
-                                                            VND
-                                                        </h7>
-                                                    </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                        <a href="{{ route('cart.delete', $product['id']) }}"
-                                                            class="text-muted "><i class="fas fa-times"></i></a>
-                                                    </div>
-                                                </div>
-
-                                                <hr class="my-4">
-                                            @endforeach
-
-                                            <div class="pt-5">
-                                                <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
-                                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 bg-grey">
-                                        <div class="p-5">
-                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-                                            <hr class="my-4">
-
-                                            <div class="d-flex justify-content-between mb-4">
-                                                <h5 class="text-uppercase">items: </h5>
-                                                <h5>{{ $sum }}</h5>
-                                            </div>
-
-                                            <hr class="my-4">
-
-                                            <div class="d-flex justify-content-between mb-5">
-                                                <h5 class="text-uppercase">Total price</h5>
-                                                <h5>{{ $total }} (VND)</h5>
-                                            </div>
-
-                                            <button type="button" class="btn btn-dark btn-block btn-lg"
-                                                data-mdb-ripple-color="dark">Go to order</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            @else
-                                <h3 class="text-warning text-center"> No item </h3>
-                                <div class="pt-5">
-                                    <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
-                                                class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
     <!-- Related items section-->
     <section class="py-5 bg-light">
         <div class="container px-4 px-lg-5 mt-5">
-            <h2 class="fw-bolder mb-4">Related products</h2>
+            <h2 class="fw-bolder mb-4">Other products</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <div class="col mb-5">
                     <div class="card h-100">
@@ -292,7 +202,8 @@
                         <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
                         </div>
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+                            alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
