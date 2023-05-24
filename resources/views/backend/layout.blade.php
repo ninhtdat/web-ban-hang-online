@@ -42,11 +42,11 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -66,7 +66,7 @@
                 <div id="collapseOrders" class="collapse" aria-labelledby="headingOrders"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('order.create') }}">Thêm đơn hàng mới</a>
+                        {{-- <a class="collapse-item" href="{{ route('order.create') }}">Thêm đơn hàng mới</a> --}}
                         <a class="collapse-item" href="{{ route('order.index') }}">Tất cả đơn hàng</a>
                     </div>
                 </div>
@@ -83,7 +83,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('product.index') }}">Tất cả sản phẩm</a>
                         <a class="collapse-item" href="{{ route('product-type.index') }}">Nhóm sản phẩm</a>
-                        <a class="collapse-item" href="{{ route('inventory')}}">Tồn kho</a>
                     </div>
                 </div>
             </li>
@@ -93,12 +92,12 @@
                     <i class="fa fa-user-circle"></i>
                     <span>Khách hàng</span></a>
             </li>
-
+            {{-- 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-gift"></i>
                     <span>khuyến mại</span></a>
-            </li>
+            </li> --}}
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('report.index') }}">
@@ -296,7 +295,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <img class="img-profile rounded-circle" src="{{ asset('backend/img/admin.jpg') }}">
                             </a>
                             <!-- Dropdown - User Information -->

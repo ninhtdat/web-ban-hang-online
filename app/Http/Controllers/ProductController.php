@@ -156,17 +156,6 @@ class ProductController extends Controller
             ->with('success', 'product has been deleted successfully');
     }
 
-
-    /**
-     * inventory
-     */
-    public function inventory()
-    {
-        //->paginate(5)
-        $products = product::all();
-        return view('backend.product.inventory', compact('products'));
-    }
-
     public function index_customer()
     {
         //

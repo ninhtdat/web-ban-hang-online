@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\OrderDetail;
 
 class OrderController extends Controller
 {
@@ -12,7 +14,9 @@ class OrderController extends Controller
     public function index()
     {
         //
-        return view('backend.order.index');
+        $orders = Order::all();
+        $details = OrderDetail::all();
+        return view('backend.order.index', compact('orders', 'details'));
     }
 
     /**
