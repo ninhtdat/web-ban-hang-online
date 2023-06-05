@@ -56,7 +56,7 @@
                                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                                     </div>
                                                     <!-- Product price-->
-                                                    {{ $product->price }} vnd
+                                                    {{ number_format($product->price, 0, ',', '.') }} VND
                                                 </div>
                                             </div>
                                             <!-- Product actions-->
@@ -93,13 +93,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,13 +132,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,13 +171,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,13 +210,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -245,13 +249,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -283,13 +288,14 @@
                                                         <div class="d-flex justify-content-center small text-warning mb-2">
                                                         </div>
                                                         <!-- Product price-->
-                                                        {{ $product->price }} vnd
+                                                        {{ number_format($product->price, 0, ',', '.') }} VND
                                                     </div>
                                                 </div>
                                                 <!-- Product actions-->
                                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                                     <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a></div>
+                                                            href="{{ route('cart.add', $product->id) }}">Add to cart</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

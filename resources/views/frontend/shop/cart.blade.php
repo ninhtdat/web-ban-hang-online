@@ -72,7 +72,7 @@
 
                                             <!-- Price -->
                                             <p class="text-start text-md-center">
-                                                <strong>{{ $product['price'] }} (VND)</strong>
+                                                <strong>{{ number_format($product['price'], 0, ',', '.') }} (VND)</strong>
                                             </p>
                                             <!-- Price -->
                                         </div>
@@ -95,7 +95,7 @@
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                         Products
-                                        <span>{{ $total }} VND</span>
+                                        <span>{{ number_format($total, 0, ',', '.') }} VND</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                         Shipping
@@ -109,7 +109,7 @@
                                                 <p class="mb-0">(including VAT)</p>
                                             </strong>
                                         </div>
-                                        <span><strong>{{ $total }} VND</strong></span>
+                                        <span><strong>{{ number_format($total, 0, ',', '.') }} VND</strong></span>
                                     </li>
                                 </ul>
 

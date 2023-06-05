@@ -20,11 +20,11 @@
         <div class="card shadow mb-4 ">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col" style="max-width: 20%;" >hình ảnh</th>
+                                <th scope="col">hình ảnh</th>
                                 <th scope="col">tên</th>
                                 <th scope="col">loại</th>
                                 <th scope="col">số lượng</th>
@@ -41,16 +41,14 @@
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>
-                                        <div class="">
-                                            <!-- Product image-->
-                                            <img class="rounded" src="{{ asset('storage/images/'.$product->image) }}"  width="120" height="80" alt="...">
-                                        </div>
+                                        <img class="rounded" src="{{ asset('storage/images/' . $product->image) }}"
+                                            width="120" height="80" alt="...">
                                     </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->cost }}</td>
-                                    <td>{{ $product->price }}</td>
+                                    <td>{{number_format($product->price, 0, ',', '.')}}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>

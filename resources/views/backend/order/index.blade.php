@@ -44,7 +44,7 @@
                                         @endphp
                                         <tr>
                                             <td>
-                                                <a href="#" class="link-primary">{{ $order->id }}</a>
+                                                <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
                                             </td>
                                             <td>{{ $order->created_at }}</td>
                                             @if ($order->customer)
@@ -69,7 +69,7 @@
                                                     @endphp
                                                 @endif
                                             @endforeach
-                                            <td>{{ $total }}(VND)</td>
+                                            <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -97,7 +97,7 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="#" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -122,7 +122,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{ $total }}(VND)</td>
+                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -150,7 +150,7 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="#" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -175,7 +175,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{ $total }}(VND)</td>
+                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -203,7 +203,7 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="#" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -228,7 +228,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{ $total }}(VND)</td>
+                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach
