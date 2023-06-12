@@ -27,6 +27,7 @@
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Thanh toán</th>
                                 <th scope="col">Giao hàng</th>
+                                <th scope="col">Thao tac</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,16 +44,31 @@
                                     <td>{{ $order->user->email }}</td>
                                 @endif
                                 <td>{{ $order->address }}</td>
-                                @if ($order->pay)
-                                    <td class="text-success">Đã thanh toán</td>
-                                @else
-                                    <td class="text-warning">Chưa thanh toán</td>
-                                @endif
-                                @if ($order->inventory)
-                                    <td class="text-success">Đã giao</td>
-                                @else
-                                    <td class="text-warning">Chưa giao</td>
-                                @endif
+                                <td>
+                                    <select class="custom-select my-1 mr-sm-2" name="pay">
+                                        @if ($order->pay)
+                                            <option selected value="1">Đã thanh toán</option>
+                                            <option value="0">Chưa thanh toán</option>
+                                        @else
+                                            <option value="1">Đã thanh toán</option>
+                                            <option selected value="0">Chưa thanh toán</option>
+                                        @endif
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="custom-select my-1 mr-sm-2" name="inventory">
+                                        @if ($order->inventory)
+                                            <option selected value="1">Đã giao</option>
+                                            <option value="0">Chưa giao</option>
+                                        @else
+                                            <option value="1">Đã giao</option>
+                                            <option selected value="0">Chưa giao</option>
+                                        @endif
+                                    </select>
+                                </td>
+                                <td>
+                                    <button class="btn btn-success" type="submit">Save</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -60,9 +76,9 @@
             </div>
         </div>
     </div>
-
     <br class="my-5">
-
+    <hr>
+    <br class="my-5">
 
     <strong>Chi tiết đơn hàng</strong>
     <div class="table-responsive">
@@ -81,30 +97,30 @@
             <tbody>
                 @php $total = 0 @endphp
                 @foreach ($details as $detail)
-                @php $total += $detail->product->price * $detail->quantity; @endphp
-                <tr>
-                    <td>{{$detail->product->id}}</td>
-                    <td>
-                        <img class="rounded" src="{{ asset('storage/images/' . $detail->product->image) }}"
-                            width="120" height="80" alt="...">
-                    </td>
-                    <td>{{$detail->product->name}}</td>
-                    <td>{{$detail->product->type->name}}</td>
-                    <td>{{$detail->quantity}}</td>
-                    <td>{{number_format($detail->product->price, 0, ',', '.')}} (vnd)</td>
-                </tr>
+                    @php $total += $detail->product->price * $detail->quantity; @endphp
+                    <tr>
+                        <td>{{ $detail->product->id }}</td>
+                        <td>
+                            <img class="rounded" src="{{ asset('storage/images/' . $detail->product->image) }}"
+                                width="120" height="80" alt="...">
+                        </td>
+                        <td>{{ $detail->product->name }}</td>
+                        <td>{{ $detail->product->type->name }}</td>
+                        <td>{{ $detail->quantity }}</td>
+                        <td>{{ number_format($detail->product->price, 0, ',', '.') }} (vnd)</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
-        <h5> <strong>sum: {{number_format($total, 0, ',', '.')}}  (VND)</strong></h5>
+        <h5> <strong>sum: {{ number_format($total, 0, ',', '.') }} (VND)</strong></h5>
 
         <br class="my-5">
-
-        <a class="btn btn-primary" href="#" role="button">Link</a>
-        <button class="btn btn-primary" type="submit">Button</button>
-        <input class="btn btn-primary" type="button" value="Input">
-        <input class="btn btn-primary" type="submit" value="Submit">
-        <input class="btn btn-primary" type="reset" value="Reset">
-
+        <hr>
+        <br class="my-5">
+        @if ($order->pay && $order->inventory)
+            <a class="btn btn-danger" href="#" role="button">Xóa đơn hàng</a>
+        @else
+            <a class="btn btn-danger" href="#" role="button">Hủy đơn hàng</a>
+        @endif
     </div>
 @endsection

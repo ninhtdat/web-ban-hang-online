@@ -150,6 +150,8 @@ class ProductController extends Controller
                 unlink($path);
             }
         }
+        //
+        $product->orderDetails()->delete();
 
         $product->delete();
         return redirect()->route('product.index')
