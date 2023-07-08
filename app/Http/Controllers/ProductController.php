@@ -171,4 +171,12 @@ class ProductController extends Controller
         $products = product::orderBy('quantity', 'desc')->take(8)->get();
         return view('frontend.homepage.index', compact('products'));
     }
+
+    public function search(Request $request) {
+        //
+        // dd($request->search);
+        $products = Product::where('name', 'like', '%'.$request->search.'%')->get();
+        // $products = Product::whereRaw('lower(name) like ?', ['%' . strtolower('dfklsj') . '%'])->get();
+        return view('frontend.search.search', compact('products'));
+    }
 }

@@ -97,10 +97,15 @@
                                         <span><strong>{{ number_format($total, 0, ',', '.') }}(VND)</strong></span>
                                     </li>
                                 </ul>
-
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                    Order
-                                </button>
+                                @if (!empty(session('cart')))
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                        Order
+                                    </button>
+                                @else
+                                    <a href="{{ route('products') }}" class="btn btn-primary btn-lg btn-block">
+                                        Go to shop
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

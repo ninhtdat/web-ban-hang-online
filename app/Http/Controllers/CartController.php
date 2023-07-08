@@ -72,6 +72,9 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
+                $p = product::find($product['id']);
+                $p->quantity -= $product['quantity'];
+                $p->save();
             }
 
         } else {
@@ -101,6 +104,9 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
+                $p = product::find($product['id']);
+                $p->quantity -= $product['quantity'];
+                $p->save();
             }
         }
 

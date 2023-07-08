@@ -35,7 +35,7 @@
                     <li class="nav-item"><a class="nav-link " aria-current="page"
                             href="{{ route('homepage') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('products') }}">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Blog</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="#!">Blog</a></li> --}}
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                 </ul>
@@ -56,7 +56,7 @@
                             <strong class="text-info">Hello, {{ Auth::user()->name }}</strong>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Profile</a>
+                            <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
                             <a class="dropdown-item" href="#">history</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" data-toggle="modal"

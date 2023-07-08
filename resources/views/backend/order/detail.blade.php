@@ -44,31 +44,36 @@
                                     <td>{{ $order->user->email }}</td>
                                 @endif
                                 <td>{{ $order->address }}</td>
-                                <td>
-                                    <select class="custom-select my-1 mr-sm-2" name="pay">
-                                        @if ($order->pay)
-                                            <option selected value="1">Đã thanh toán</option>
-                                            <option value="0">Chưa thanh toán</option>
-                                        @else
-                                            <option value="1">Đã thanh toán</option>
-                                            <option selected value="0">Chưa thanh toán</option>
-                                        @endif
-                                    </select>
-                                </td>
-                                <td>
-                                    <select class="custom-select my-1 mr-sm-2" name="inventory">
-                                        @if ($order->inventory)
-                                            <option selected value="1">Đã giao</option>
-                                            <option value="0">Chưa giao</option>
-                                        @else
-                                            <option value="1">Đã giao</option>
-                                            <option selected value="0">Chưa giao</option>
-                                        @endif
-                                    </select>
-                                </td>
-                                <td>
-                                    <button class="btn btn-success" type="submit">Save</button>
-                                </td>
+                                <form action="{{ route('order.update', $order->id) }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <td>
+                                        <select class="custom-select my-1 mr-sm-2" name="pay">
+                                            @if ($order->pay)
+                                                <option selected value="1">Đã thanh toán</option>
+                                                <option value="0">Chưa thanh toán</option>
+                                            @else
+                                                <option value="1">Đã thanh toán</option>
+                                                <option selected value="0">Chưa thanh toán</option>
+                                            @endif
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="custom-select my-1 mr-sm-2" name="delivery">
+                                            @if ($order->delivery)
+                                                <option selected value="1">Đã giao</option>
+                                                <option value="0">Chưa giao</option>
+                                            @else
+                                                <option value="1">Đã giao</option>
+                                                <option selected value="0">Chưa giao</option>
+                                            @endif
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success" type="submit">Save</button>
+                                    </td>
+                                </form>
                             </tr>
                         </tbody>
                     </table>
@@ -117,7 +122,7 @@
         <br class="my-5">
         <hr>
         <br class="my-5">
-        @if ($order->pay && $order->inventory)
+        @if ($order->pay && $order->delivery)
             <a class="btn btn-danger" href="#" role="button">Xóa đơn hàng</a>
         @else
             <a class="btn btn-danger" href="#" role="button">Hủy đơn hàng</a>

@@ -6,9 +6,12 @@ use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAdmin;
+use Symfony\Component\HttpKernel\Profiler\Profile;
+
 // use App\Http\Middleware\EnsureTokenIsValid;
 
 /*
@@ -23,6 +26,8 @@ use App\Http\Middleware\CheckAdmin;
 */
 //frontend
 
+//profile
+Route::resource('profile', ProfileController::class);
 //homepage
 Route::get('home', [ProductController::class, 'index_home'])->name('homepage');
 Route::get('/', [ProductController::class, 'index_home']);
@@ -36,6 +41,8 @@ Route::get('products', [ProductController::class, 'index_customer'])->name('prod
 Route::get('product-details', function () {
     return view('frontend.shop.product-details');
 })->name('product-details');
+//search
+Route::get('search',[ProductController::class,'search'])->name('search');
 //order
 Route::get('order', function () {
     return view('frontend.shop.order');

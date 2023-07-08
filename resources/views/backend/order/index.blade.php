@@ -57,7 +57,7 @@
                                             @else
                                                 <td class="text-warning">Chưa thanh toán</td>
                                             @endif
-                                            @if ($order->inventory)
+                                            @if ($order->delivery)
                                                 <td class="text-success">Đã giao</td>
                                             @else
                                                 <td class="text-warning">Chưa giao</td>
@@ -110,7 +110,7 @@
                                                 @else
                                                     <td class="text-warning">Chưa thanh toán</td>
                                                 @endif
-                                                @if ($order->inventory)
+                                                @if ($order->delivery)
                                                     <td class="text-success">Đã giao</td>
                                                 @else
                                                     <td class="text-warning">Chưa giao</td>
@@ -144,7 +144,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                        @if ($order->inventory == false)
+                                        @if ($order->delivery == false)
                                             @php
                                                 $total = 0;
                                             @endphp
@@ -163,7 +163,7 @@
                                                 @else
                                                     <td class="text-warning">Chưa thanh toán</td>
                                                 @endif
-                                                @if ($order->inventory)
+                                                @if ($order->delivery)
                                                     <td class="text-success">Đã giao</td>
                                                 @else
                                                     <td class="text-warning">Chưa giao</td>
@@ -197,7 +197,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                        @if ($order->pay && $order->inventory)
+                                        @if ($order->pay && $order->delivery)
                                             @php
                                                 $total = 0;
                                             @endphp
@@ -216,7 +216,7 @@
                                                 @else
                                                     <td class="text-warning">Chưa thanh toán</td>
                                                 @endif
-                                                @if ($order->inventory)
+                                                @if ($order->delivery)
                                                     <td class="text-success">Đã giao</td>
                                                 @else
                                                     <td class="text-warning">Chưa giao</td>
