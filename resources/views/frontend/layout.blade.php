@@ -26,23 +26,23 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{ route('homepage') }}">SHOP</a>
+            <a class="navbar-brand" href="{{ route('homepage') }}">SHOP thời trang</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link " aria-current="page"
-                            href="{{ route('homepage') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " aria-current="page" href="{{ route('homepage') }}">Trang
+                            chủ</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('products') }}">Shop</a></li>
                     {{-- <li class="nav-item"><a class="nav-link" href="#!">Blog</a></li> --}}
-                    <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>
                 </ul>
                 <form class="d-flex">
                     <a href="{{ route('cart') }}" class="btn btn-outline-primary mr-5" type="submit">
                         <i class="bi-cart-fill me-1"></i>
-                        Cart
+                        Giỏ hàng
                         <span
                             class="badge bg-primary text-white ms-1 rounded-pill">{{ count((array) session('cart')) }}</span>
                     </a>
@@ -53,26 +53,26 @@
                     <div class="btn-group">
                         <a class="nav-link dropdown-toggle show" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="true">
-                            <strong class="text-info">Hello, {{ Auth::user()->name }}</strong>
+                            <strong class="text-info">Xin chào, {{ Auth::user()->name }}</strong>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('profile.index') }}">Profile</a>
-                            <a class="dropdown-item" href="#">history</a>
+                            <a class="dropdown-item" href="{{ route('profile.index') }}">Hồ sơ</a>
+                            {{-- <a class="dropdown-item" href="#">Lịch sử mua hàng</a> --}}
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal"
-                                data-target="#logoutModal">Logout</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Đăng
+                                xuất</a>
                         </div>
                     </div>
                 @endauth
                 @guest
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}" class="btn btn-outline-dark mr-2">
-                            <i>Login</i>
+                            <i>Đăng nhập</i>
                         </a>
                     @endif
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}" class="btn btn-outline-dark mr-2">
-                            <i>Register</i>
+                            <i>Đăng kí</i>
                         </a>
                     @endif
                 @endguest
@@ -91,17 +91,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn muốn đăng xuất?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Click "Đăng xuất" để đăng xuất khỏi tài khoản hiện tại.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="btn btn-danger" type="submit">Logout</button>
+                        <button class="btn btn-danger" type="submit">Đăng xuất</button>
                     </form>
                 </div>
             </div>

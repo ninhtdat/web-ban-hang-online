@@ -15,7 +15,7 @@ class CheckAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->name === "admin") {
+        if (auth()->user()->email === "admin@gmail.com") {
             return $next($request);
         }
 

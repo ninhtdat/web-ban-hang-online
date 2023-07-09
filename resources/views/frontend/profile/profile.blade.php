@@ -12,11 +12,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}" name="name">
+                            <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}"
+                                name="name">
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone number</label>
-                            <input type="phone" class="form-control" id="phone" value="{{ Auth::user()->phone }}" name="phone">
+                            <input type="phone" class="form-control" id="phone" value="{{ Auth::user()->phone }}"
+                                name="phone">
                         </div>
                         <div class="mb-3">
                             <label for="newPassword" class="form-label">New password</label>
@@ -26,10 +28,12 @@
                             <label for="cfPassword" class="form-label">Confirm password</label>
                             <input type="password" class="form-control" id="cfPassword">
                         </div>
-                        <button type="submit" class="btn btn-primary" disabled>save</button>
+                        <button type="submit" class="btn btn-primary" disabled>update</button>
                     </form>
                 </div>
-
+                @foreach ($errors->all() as $error)
+                    <li class="alert alert-danger">{{ $error }}</li>
+                @endforeach
                 <h6 class="mb-0"><a href="{{ route('products') }}" class="text-body"><i
                             class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
             </div>

@@ -10,7 +10,7 @@
     </div> --}}
     <h2>Danh sách sản phẩm</h2>
     <div class="pull-right mb-2">
-        <a class="btn btn-success" href="{{ route('product.create') }}"> Add product</a>
+        <a class="btn btn-success" href="{{ route('product.create') }}">Thêm sản phẩm</a>
     </div>
 
     <!-- Begin Page Content -->
@@ -42,7 +42,7 @@
                                     <td>{{ $product->id }}</td>
                                     <td>
                                         <img class="rounded" src="{{ asset('storage/images/' . $product->image) }}"
-                                            width="120" height="80" alt="...">
+                                            width="120" height="auto" alt="...">
                                     </td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->type->name }}</td>

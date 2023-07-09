@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\Product;
 use App\Models\ProductType;
+use Symfony\Component\CssSelector\Node\FunctionNode;
 
 class ProductController extends Controller
 {
@@ -75,8 +76,12 @@ class ProductController extends Controller
     public function show(string $id)
     {
         //
-        // $product = product::find($id);
-        // return view('product.show', compact('product'));
+        $product = product::find($id);
+        $otherProducts = Product::where('product_type_id', '=', $product->product_type_id)
+            ->where('id', '!=', $product->id)
+            ->take(4)
+            ->get();
+        return view('frontend.shop.product-details', compact('product', 'otherProducts'));
     }
 
     /**
@@ -97,7 +102,7 @@ class ProductController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required|unique:App\Models\Product,name,'.$id.',id',
+            'name' => 'required|unique:App\Models\Product,name,' . $id . ',id',
             'cost' => 'required',
             'price' => 'required',
             'type' => 'required',
@@ -172,10 +177,11 @@ class ProductController extends Controller
         return view('frontend.homepage.index', compact('products'));
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
         //
         // dd($request->search);
-        $products = Product::where('name', 'like', '%'.$request->search.'%')->get();
+        $products = Product::where('name', 'like', '%' . $request->search . '%')->get();
         // $products = Product::whereRaw('lower(name) like ?', ['%' . strtolower('dfklsj') . '%'])->get();
         return view('frontend.search.search', compact('products'));
     }

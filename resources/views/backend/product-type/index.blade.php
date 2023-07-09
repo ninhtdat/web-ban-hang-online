@@ -10,7 +10,7 @@
     </div> --}}
     <h2>Danh sách loại sản phẩm</h2>
     <div class="pull-right mb-2">
-        <a class="btn btn-success" href="{{ route('product-type.create') }}"> Add product type</a>
+        <a class="btn btn-success" href="{{ route('product-type.create') }}">Thêm loại sản phẩm</a>
     </div>
     <!-- Begin Page Content -->
     <div class="container-fluid">

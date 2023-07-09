@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Edit product type</h2>
+                    <h2>Cập nhật loại sản phẩm</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('product-type.index') }}" enctype="multipart/form-data"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('product-type.index') }}" enctype="multipart/form-data">Quay lại</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                <button type="submit" class="btn btn-primary ml-3">Cập nhật</button>
             </div>
         </form>
         @foreach ($errors->all() as $error)

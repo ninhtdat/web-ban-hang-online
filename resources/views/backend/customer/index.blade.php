@@ -1,10 +1,10 @@
 @extends('backend/layout')
 
 @section('content')
-    <h2>Danh sách khach hang</h2>
-    <div class="pull-right mb-2">
+    <h2>Danh sách thành viên</h2>
+    {{-- <div class="pull-right mb-2">
         <a class="btn btn-success" href="{{ route('product.create') }}"> them khach hang moi</a>
-    </div>
+    </div> --}}
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -20,21 +20,19 @@
                                 <th scope="col">tên</th>
                                 <th scope="col">so dien thoai</th>
                                 <th scope="col">email</th>
-                                <th scope="col">dia chi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <a href="#" class="link-primary">ABC123</a>
-                                </td>
-                                <td>Nguyễn Thị Hà</td>
-                                <td>0982341283</td>
-                                <td>test01@gmail.com</td>
-                                <td>Hai Bà Trưng, Hà Nội</td>
-                                <td>
-                                </td>
-                            </tr>
+                            @foreach ($users as $user)
+                                <tr>
+                                    <td>
+                                        <a href="#" class="link-primary">{{ $user->id }}</a>
+                                    </td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->email }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -6,13 +6,13 @@
                 <h2>Chi tiết đơn hàng</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('order.index') }}" enctype="multipart/form-data"> Back</a>
+                <a class="btn btn-primary" href="{{ route('order.index') }}" enctype="multipart/form-data">Quay lại</a>
             </div>
         </div>
     </div>
     <br class="my-5">
     <div class="container-fluid">
-        <strong> Order details</strong>
+        <strong>Thông tin</strong>
         <div class="card shadow mb-4 ">
             <div class="card-body">
                 <div class="table-responsive">
@@ -22,7 +22,7 @@
                                 <th scope="col">Mã</th>
                                 <th scope="col">Ngày tạo</th>
                                 <th scope="col">Khách hàng</th>
-                                <th scope="col">SDT</th>
+                                <th scope="col">SĐT</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Địa chỉ</th>
                                 <th scope="col">Thanh toán</th>
@@ -117,7 +117,7 @@
                 @endforeach
             </tbody>
         </table>
-        <h5> <strong>sum: {{ number_format($total, 0, ',', '.') }} (VND)</strong></h5>
+        <h5> <strong>Tổng: {{ number_format($total, 0, ',', '.') }} (VND)</strong></h5>
 
         <br class="my-5">
         <hr>

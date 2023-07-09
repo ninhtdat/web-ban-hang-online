@@ -38,9 +38,7 @@ Route::get('delete-from-cart/{id}', [CartController::class, 'delete'])->name('ca
 Route::get('add-to-cart/{id}', [CartController::class, 'create'])->name('cart.add');
 //shop
 Route::get('products', [ProductController::class, 'index_customer'])->name('products');
-Route::get('product-details', function () {
-    return view('frontend.shop.product-details');
-})->name('product-details');
+Route::get('product-details/{id}', [ProductController::class, 'show'])->name('product-details');
 //search
 Route::get('search',[ProductController::class,'search'])->name('search');
 //order
@@ -51,10 +49,17 @@ Route::post('order', [CartController::class, 'store'])->name('order');
 Route::get('order-completed', function () {
     return view('frontend.shop.complete');
 })->name('completed');
+//about
+Route::get('about', function () {
+    return view('frontend.about.index');
+})->name('about');
+//contact
+Route::get('contact', function () {
+    return view('frontend.contact.index');
+})->name('contact');
 
 
 //backend
-
 Route::middleware([Authenticate::class, CheckAdmin::class])->prefix('admin')->group(function () {
 
     Route::resource('product', ProductController::class);

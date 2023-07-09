@@ -2,13 +2,13 @@
 @section('content')
     <div class="card shadow ">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Add product</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Thêm sản phẩm</h6>
         </div>
 
         <div class="card-body">
 
             <div class="container mt-2">
-                <a class="btn btn-primary" href="{{ route('product.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('product.index') }}">Quay lại</a>
 
                 <div class="card-body">
                     <div class="card shadow mb-4">
@@ -85,7 +85,7 @@
 
                             <div class="card-body">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary ml-3">Submit</button>
+                                    <button type="submit" class="btn btn-primary ml-3">Tạo</button>
                                 </div>
                             </div>
                         </form>
