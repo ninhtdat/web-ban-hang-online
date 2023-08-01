@@ -26,7 +26,7 @@
                             @foreach ($users as $user)
                                 <tr>
                                     <td>
-                                        <a href="#" class="link-primary">{{ $user->id }}</a>
+                                        <a href="{{ route('customer.show', $user->id) }}" class="link-primary">{{ $user->id }}</a>
                                     </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->phone }}</td>

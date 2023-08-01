@@ -40,6 +40,8 @@ class CustomerController extends Controller
     public function show(string $id)
     {
         //
+        $user = user::find($id);
+        return view('backend.customer.detail', compact('user'));
     }
 
     /**

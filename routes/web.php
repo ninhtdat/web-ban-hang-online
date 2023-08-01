@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\CheckAdmin;
@@ -28,6 +29,8 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 //profile
 Route::resource('profile', ProfileController::class);
+//history
+Route::get('history-order', [HistoryController::class, 'index'])->name('history.index');
 //homepage
 Route::get('home', [ProductController::class, 'index_home'])->name('homepage');
 Route::get('/', [ProductController::class, 'index_home']);
@@ -40,7 +43,7 @@ Route::get('add-to-cart/{id}', [CartController::class, 'create'])->name('cart.ad
 Route::get('products', [ProductController::class, 'index_customer'])->name('products');
 Route::get('product-details/{id}', [ProductController::class, 'show'])->name('product-details');
 //search
-Route::get('search',[ProductController::class,'search'])->name('search');
+Route::get('search', [ProductController::class, 'search'])->name('search');
 //order
 Route::get('order', function () {
     return view('frontend.shop.order');
