@@ -61,11 +61,17 @@
                                     </td>
                                     <td>
                                         <select class="custom-select my-1 mr-sm-2" name="delivery">
-                                            @if ($order->delivery)
-                                                <option selected value="1">Đã giao</option>
+                                            @if ($order->delivery == 2)
+                                                <option selected value="2">Đã giao</option>
+                                                <option value="1">Đang giao hàng</option>
+                                                <option value="0">Chưa giao</option>
+                                            @elseif ($order->delivery == 1)
+                                                <option selected value="1">Đang giao hàng</option>
+                                                <option value="2">Đã giao</option>
                                                 <option value="0">Chưa giao</option>
                                             @else
-                                                <option value="1">Đã giao</option>
+                                                <option value="2">Đã giao</option>
+                                                <option value="1">Đang giao hàng</option>
                                                 <option selected value="0">Chưa giao</option>
                                             @endif
                                         </select>
@@ -81,6 +87,12 @@
             </div>
         </div>
     </div>
+    @foreach ($errors->all() as $error)
+        <li class="alert alert-danger">{{ $error }}</li>
+    @endforeach
+    @if (session()->has('success'))
+        <div class="alert alert-success"> {{ session()->get('success') }} </div>
+    @endif
     <br class="my-5">
     <hr>
     <br class="my-5">
@@ -110,7 +122,7 @@
                                 width="120" height="80" alt="...">
                         </td>
                         <td>{{ $detail->product->name }}</td>
-                        <td>{{ $detail->product->type->name }}</td>
+                        <td>{{ $detail->product->type->name ?? 'None' }}</td>
                         <td>{{ $detail->quantity }}</td>
                         <td>{{ number_format($detail->product->price, 0, ',', '.') }} (vnd)</td>
                     </tr>
@@ -122,10 +134,39 @@
         <br class="my-5">
         <hr>
         <br class="my-5">
-        @if ($order->pay && $order->delivery)
-            <a class="btn btn-danger" href="#" role="button">Xóa đơn hàng</a>
+        @if ($order->pay && $order->delivery == 2)
         @else
-            <a class="btn btn-danger" href="#" role="button">Hủy đơn hàng</a>
+            {{-- <a class="btn btn-danger" href="#" role="button">Hủy đơn hàng</a> --}}
+            <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteOrderModal">
+                Hủy đơn hàng
+            </a>
         @endif
+    </div>
+
+    <!-- Delete order Modal-->
+    <div class="modal fade" id="deleteOrderModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bạn muốn hủy đơn hàng?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Click "Hủy đơn hàng" để hủy đơn hàng hiện tại.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Từ bỏ</button>
+                    {{-- <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger" type="submit">Hủy đơn hàng</button>
+                    </form> --}}
+                    <form action="{{ route('order.destroy', $order->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" type="submit">Hủy đơn hàng</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

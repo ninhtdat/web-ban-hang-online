@@ -56,9 +56,9 @@
                             <strong class="text-info">Xin chào, {{ Auth::user()->name }}</strong>
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('profile.index') }}">Hồ sơ</a>
-                            <a class="dropdown-item" href="{{ route('history.index') }}">Lịch sử mua hàng</a>
-                            <div class="dropdown-divider"></div>
+                            {{-- <a class="dropdown-item" href="{{ route('profile.index') }}">Hồ sơ</a> --}}
+                            {{-- <a class="dropdown-item" href="{{ route('history.index') }}">Lịch sử mua hàng</a> --}}
+                            {{-- <div class="dropdown-divider"></div> --}}
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Đăng
                                 xuất</a>
                         </div>

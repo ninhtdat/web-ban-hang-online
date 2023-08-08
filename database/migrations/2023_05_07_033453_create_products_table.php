@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('price')->default('0');
             $table->string('description', 200)->nullable();
             $table->unsignedBigInteger('product_type_id');
-            $table->foreign('product_type_id')->references('id')->on('product_types');
+            // $table->foreign('product_type_id')->references('id')->on('product_types');
             $table->timestamps();
         });
     }

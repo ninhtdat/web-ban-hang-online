@@ -29,7 +29,7 @@
                                     <strong>loại*</strong>
                                     <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref"
                                         name="type">
-                                        <option selected value="{{ $product->product_type_id }}">{{ $product->type->name }}
+                                        <option selected value="{{ $product->product_type_id }}">{{ $product->type->name ?? "none" }}
                                         </option>
 
                                         @foreach ($types as $type)

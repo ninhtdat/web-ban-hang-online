@@ -91,7 +91,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if ($product->type->name == 'Women')
+                                    @if ($product->type != NULL && $product->type->name == 'Women')
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->
@@ -143,7 +143,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if ($product->type->name == 'Men')
+                                    @if ($product->type != NULL && $product->type->name == 'Men')
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->
@@ -195,7 +195,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if ($product->type->name == 'Bag')
+                                    @if ($product->type != NULL && $product->type->name == 'Bag')
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->
@@ -247,7 +247,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if ($product->type->name == 'Shoes')
+                                    @if ($product->type != NULL && $product->type->name == 'Shoes')
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->
@@ -299,7 +299,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if ($product->type->name == 'Watches')
+                                    @if ($product->type != NULL && $product->type->name == 'Watches')
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->
@@ -351,7 +351,7 @@
                         <div class="container px-4 px-lg-5 mt-5">
                             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                                 @foreach ($products as $product)
-                                    @if (!in_array($product->type->name, ['Women', 'Men', 'Bag', 'Shoes', 'Watches']))
+                                    @if (( ($product->type != NULL && !in_array( $product->type->name, ['Women', 'Men', 'Bag', 'Shoes', 'Watches'])) || $product->type == NULL ))
                                         <div class="col mb-5">
                                             <div class="card h-100">
                                                 <!-- Product image-->

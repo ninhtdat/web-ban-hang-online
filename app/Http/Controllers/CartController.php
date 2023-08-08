@@ -36,7 +36,7 @@ class CartController extends Controller
         } else {
             $cart[$id] = [
                 "id" => $id,
-                "type" => $product->type->name,
+                "type" => $product->type->name ?? "none",
                 "name" => $product->name,
                 "quantity" => 1,
                 "price" => $product->price,
@@ -72,9 +72,9 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
-                $p = product::find($product['id']);
-                $p->quantity -= $product['quantity'];
-                $p->save();
+                // $p = product::find($product['id']);
+                // $p->quantity -= $product['quantity'];
+                // $p->save();
             }
 
         } else {
@@ -104,9 +104,9 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
-                $p = product::find($product['id']);
-                $p->quantity -= $product['quantity'];
-                $p->save();
+                // $p = product::find($product['id']);
+                // $p->quantity -= $product['quantity'];
+                // $p->save();
             }
         }
 

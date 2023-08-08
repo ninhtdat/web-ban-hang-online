@@ -45,10 +45,14 @@
                                             width="120" height="auto" alt="...">
                                     </td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{{ $product->type->name }}</td>
+                                    @if ($product->type == null)
+                                        <td class="text-warning">NULL</td>
+                                    @else
+                                        <td>{{ $product->type->name }}</td>
+                                    @endif
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->cost }}</td>
-                                    <td>{{number_format($product->price, 0, ',', '.')}}</td>
+                                    <td>{{ number_format($product->price, 0, ',', '.') }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>{{ $product->created_at }}</td>
                                     <td>{{ $product->updated_at }}</td>

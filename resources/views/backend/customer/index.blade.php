@@ -18,7 +18,7 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">tên</th>
-                                <th scope="col">so dien thoai</th>
+                                <th scope="col">số điện thoại</th>
                                 <th scope="col">email</th>
                             </tr>
                         </thead>

@@ -44,7 +44,8 @@
                                         @endphp
                                         <tr>
                                             <td>
-                                                <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
+                                                <a href="{{ route('order.show', $order->id) }}"
+                                                    class="link-primary">{{ $order->id }}</a>
                                             </td>
                                             <td>{{ $order->created_at }}</td>
                                             @if ($order->customer)
@@ -57,8 +58,10 @@
                                             @else
                                                 <td class="text-warning">Chưa thanh toán</td>
                                             @endif
-                                            @if ($order->delivery)
+                                            @if ($order->delivery == 2)
                                                 <td class="text-success">Đã giao</td>
+                                            @elseif ($order->delivery == 1)
+                                                <td class="text-primary">Đang giao hàng</td>
                                             @else
                                                 <td class="text-warning">Chưa giao</td>
                                             @endif
@@ -69,7 +72,7 @@
                                                     @endphp
                                                 @endif
                                             @endforeach
-                                            <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
+                                            <td>{{ number_format($total, 0, ',', '.') }}(VND)</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -97,7 +100,8 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                        class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -122,7 +126,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
+                                                <td>{{ number_format($total, 0, ',', '.') }}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -150,7 +154,8 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                        class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -175,7 +180,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
+                                                <td>{{ number_format($total, 0, ',', '.') }}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -203,7 +208,8 @@
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <a href="{{ route('order.show', $order->id) }}" class="link-primary">{{ $order->id }}</a>
+                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                        class="link-primary">{{ $order->id }}</a>
                                                 </td>
                                                 <td>{{ $order->created_at }}</td>
                                                 @if ($order->customer)
@@ -228,7 +234,7 @@
                                                         @endphp
                                                     @endif
                                                 @endforeach
-                                                <td>{{number_format($total, 0, ',', '.')}}(VND)</td>
+                                                <td>{{ number_format($total, 0, ',', '.') }}(VND)</td>
                                             </tr>
                                         @endif
                                     @endforeach

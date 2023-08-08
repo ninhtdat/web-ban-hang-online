@@ -114,7 +114,7 @@
         </div>
     </section>
 
-    <!-- Related items section-->
+    {{-- <!-- Related items section-->
     <section class="py-5 bg-light">
         <div class="container px-4 px-lg-5 mt-5">
             <h2 class="fw-bolder mb-4">Related products</h2>
@@ -231,5 +231,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 @endsection

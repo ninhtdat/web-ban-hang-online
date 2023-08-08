@@ -84,7 +84,7 @@ class ProductTypeController extends Controller
     {
         //
         $type = ProductType::find($id);
-        $type->products()->delete();
+        // $type->products()->delete();
         $type->delete();
         return redirect()->route('product-type.index')
             ->with('success', 'ProductType has been deleted successfully');

@@ -10,12 +10,13 @@
                         src="{{ asset('storage/images/' . $product->image) }}" alt="..." />
                 </div>
                 <div class="col-md-6">
-                    <div class="small mb-1">{{ $product->type->name }}</div>
+
+                    <div class="small mb-1">Type: {{ $product->type->name ?? "none"}}</div>
                     <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
                     <div class="fs-5 mb-5">
                         <span>{{ number_format($product->price, 0, ',', '.') }} VND</span>
                     </div>
-                    <p class="lead">{{ $product->description }}</p>
+                    <p class="lead">Mô tả: {{ $product->description ?? "none" }}</p>
                     <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
                         <a class="btn btn-outline-dark mt-auto"href="{{ route('cart.add', $product->id) }}">
                             <i class="bi-cart-fill me-1"></i>
