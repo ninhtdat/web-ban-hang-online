@@ -4,6 +4,9 @@
 
     <section class="h-100 gradient-custom">
         <div class="container py-5">
+            @if (session()->has('success'))
+                <div class="alert alert-success"> {{ session()->get('success') }} </div>
+            @endif
             @if (session()->has('cart'))
                 <div class="row d-flex justify-content-center my-4">
                     <div class="col-md-8">

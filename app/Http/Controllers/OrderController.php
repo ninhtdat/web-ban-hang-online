@@ -107,6 +107,6 @@ class OrderController extends Controller
         $order->orderDetails()->delete();
         $order->delete();
         return redirect()->route('order.index')
-            ->with('success', 'order has been deleted successfully');
+            ->with('success', 'Hủy đơn hàng thành công!');
     }
 }

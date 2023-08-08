@@ -30,9 +30,6 @@ class ProductTypeSeeder extends Seeder
             [
                 'name' => 'Watches',
             ],
-            [
-                'name' => 'Other',
-            ],
         ]; 
             foreach ($types as $key=>$value){
                 ProductType::create($value);

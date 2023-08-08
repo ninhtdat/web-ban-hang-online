@@ -45,7 +45,7 @@ class CartController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Thêm sản phẩm vào giỏ hàng thành công!');
     }
 
     /**
@@ -72,9 +72,6 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
-                // $p = product::find($product['id']);
-                // $p->quantity -= $product['quantity'];
-                // $p->save();
             }
 
         } else {
@@ -104,9 +101,6 @@ class CartController extends Controller
                 $detail->order_id = $order->id;
                 $detail->quantity = $product['quantity'];
                 $detail->save();
-                // $p = product::find($product['id']);
-                // $p->quantity -= $product['quantity'];
-                // $p->save();
             }
         }
 
@@ -152,7 +146,7 @@ class CartController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product add to cart successfully!');
+        return redirect()->back()->with('success', 'Cập nhật giỏ hàng thành công!');
     }
 
     /**
@@ -167,6 +161,6 @@ class CartController extends Controller
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product remove to cart successfully!');
+        return redirect()->back()->with('success', 'Xóa sản phẩm khỏi giỏ hàng thành công!');
     }
 }

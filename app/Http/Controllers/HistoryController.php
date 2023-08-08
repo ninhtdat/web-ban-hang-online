@@ -10,7 +10,6 @@ class HistoryController extends Controller
     //
     public function index() {
         $orders = Order::where('user_id', '=', 1);
-        // dd($orders->first());
         return view('frontend.history.history', compact('orders'));
     }
 }

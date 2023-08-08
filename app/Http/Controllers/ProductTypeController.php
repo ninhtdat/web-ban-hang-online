@@ -37,7 +37,7 @@ class ProductTypeController extends Controller
         $ProductType->name = $request->name;
         $ProductType->save();
         return redirect()->route('product-type.index')
-            ->with('success', 'ProductType has been created successfully.');
+            ->with('success', 'Thêm mới loại sản phẩm thành công!');
     }
 
     /**
@@ -45,9 +45,7 @@ class ProductTypeController extends Controller
      */
     public function show(string $id)
     {
-        // //
-        // $ProductType = ProductType::find($id);
-        // return view('Product-type.show', compact('ProductType'));
+        //
     }
 
     /**
@@ -55,7 +53,6 @@ class ProductTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
         $ProductType = ProductType::find($id);
         return view('backend.product-type.edit', compact('ProductType'));
     }
@@ -68,13 +65,12 @@ class ProductTypeController extends Controller
         //
         $request->validate([
             'name' => 'required|unique:App\Models\ProductType,name,'.$id.',id', 
-            // 'name' => 'required|unique:App\Models\ProductType,name'.$id,
         ]);
         $ProductType = ProductType::find($id);
         $ProductType->name = $request->name;
         $ProductType->save();
         return redirect()->route('product-type.index')
-            ->with('success', 'ProductType Has Been updated successfully');
+            ->with('success', 'Cập nhật loại sản phẩm thành công!');
     }
 
     /**
@@ -82,12 +78,10 @@ class ProductTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $type = ProductType::find($id);
-        // $type->products()->delete();
         $type->delete();
         return redirect()->route('product-type.index')
-            ->with('success', 'ProductType has been deleted successfully');
+            ->with('success', 'Xóa loại sản phẩm thành công!');
     }
 
 }
