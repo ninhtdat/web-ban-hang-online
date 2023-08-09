@@ -90,10 +90,10 @@
                 <div id="pieChart" style="height: 360px; width: 100%;">
                 </div>
             </div>
-            {{-- <div class="col-md-6">
+            <div class="col-md-6">
                 <div id="columnChart" style="height: 360px; width: 100%;">
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
     @php
@@ -105,6 +105,7 @@
         window.onload = function() {
             var sumOrder = JSON.parse('<?php echo $sumOrder_json; ?>');
             var sumOrderOfUser = JSON.parse('<?php echo $sumOrderOfUser_json; ?>');
+            var sixMonths = @json($sixMonths);
             var pieChartValues = [{
                 y: sumOrderOfUser,
                 exploded: true,
@@ -144,72 +145,68 @@
                 });
                 chart.render();
             }
-            //     var columnChartValues = [{
-            //         y: 686.04,
-            //         label: "one",
-            //         color: "#1f77b4"
-            //     }, {
-            //         y: 381.84,
-            //         label: "two",
-            //         color: "#ff7f0e"
-            //     }, {
-            //         y: 375.76,
-            //         label: "three",
-            //         color: " #ffbb78"
-            //     }, {
-            //         y: 97.48,
-            //         label: "four",
-            //         color: "#d62728"
-            //     }, {
-            //         y: 94.2,
-            //         label: "five",
-            //         color: "#98df8a"
-            //     }, {
-            //         y: 65.28,
-            //         label: "Hi",
-            //         color: "#bcbd22"
-            //     }, {
-            //         y: 51.2,
-            //         label: "Hello",
-            //         color: "#f7b6d2"
-            //     }];
-            //     renderColumnChart(columnChartValues);
+                var columnChartValues = [{
+                    y: sixMonths[5],
+                    label: "4 tháng trước",
+                    color: "#1f77b4"
+                }, {
+                    y: sixMonths[4],
+                    label: "4 tháng trước",
+                    color: "#ff7f0e"
+                }, {
+                    y: sixMonths[3],
+                    label: "3 tháng trước",
+                    color: " #ffbb78"
+                }, {
+                    y: sixMonths[2],
+                    label: "2 tháng trước",
+                    color: "#d62728"
+                }, {
+                    y: sixMonths[1],
+                    label: "1 tháng trước",
+                    color: "#98df8a"
+                }, {
+                    y: sixMonths[0],
+                    label: "Tháng này",
+                    color: "#bcbd22"
+                }];
+                renderColumnChart(columnChartValues);
 
-            //     function renderColumnChart(values) {
+                function renderColumnChart(values) {
 
-            //         var chart = new CanvasJS.Chart("columnChart", {
-            //             backgroundColor: "white",
-            //             colorSet: "colorSet3",
-            //             title: {
-            //                 text: "Doanh thu 6 tháng gần nhất",
-            //                 fontFamily: "Verdana",
-            //                 fontSize: 25,
-            //                 fontWeight: "normal",
-            //             },
-            //             animationEnabled: true,
-            //             legend: {
-            //                 verticalAlign: "bottom",
-            //                 horizontalAlign: "center"
-            //             },
-            //             theme: "theme2",
-            //             data: [
+                    var chart = new CanvasJS.Chart("columnChart", {
+                        backgroundColor: "white",
+                        colorSet: "colorSet3",
+                        title: {
+                            text: "Doanh thu 6 tháng gần nhất",
+                            fontFamily: "Verdana",
+                            fontSize: 25,
+                            fontWeight: "normal",
+                        },
+                        animationEnabled: true,
+                        legend: {
+                            verticalAlign: "bottom",
+                            horizontalAlign: "center"
+                        },
+                        theme: "theme2",
+                        data: [
 
-            //                 {
-            //                     indexLabelFontSize: 15,
-            //                     indexLabelFontFamily: "Monospace",
-            //                     indexLabelFontColor: "darkgrey",
-            //                     indexLabelLineColor: "darkgrey",
-            //                     indexLabelPlacement: "outside",
-            //                     type: "column",
-            //                     showInLegend: false,
-            //                     legendMarkerColor: "grey",
-            //                     dataPoints: values
-            //                 }
-            //             ]
-            //         });
+                            {
+                                indexLabelFontSize: 15,
+                                indexLabelFontFamily: "Monospace",
+                                indexLabelFontColor: "darkgrey",
+                                indexLabelLineColor: "darkgrey",
+                                indexLabelPlacement: "outside",
+                                type: "column",
+                                showInLegend: false,
+                                legendMarkerColor: "grey",
+                                dataPoints: values
+                            }
+                        ]
+                    });
 
-            //         chart.render();
-            //     }
+                    chart.render();
+                }
         }
     </script>
 @endsection

@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+
 class ReportController extends Controller
 {
     /**
@@ -20,22 +21,43 @@ class ReportController extends Controller
         //Tong doanh thu
         $details = OrderDetail::all();
         $total = 0;
-        foreach ($details as $detail){
-            if($detail->order->delivery == 2 && $detail->order->pay == 1) {
+        foreach ($details as $detail) {
+            if ($detail->order->delivery == 2 && $detail->order->pay == 1) {
                 $total += $detail->quantity * $detail->product->price;
             }
         }
         //Tong doanh thu thang nay
-        $thisMonthDetails = OrderDetail::whereMonth('created_at',Carbon::now()->format('m'))
-        ->whereYear('created_at',Carbon::now()->format('Y'))
-        ->get();
+        $thisMonthDetails = OrderDetail::whereMonth('created_at', Carbon::now()->format('m'))
+            ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->get();
         $thisMonthTotal = 0;
-        foreach ($thisMonthDetails as $detail){
-            if($detail->order->delivery == 2 && $detail->order->pay == 1) {
+        foreach ($thisMonthDetails as $detail) {
+            if ($detail->order->delivery == 2 && $detail->order->pay == 1) {
                 $thisMonthTotal += $detail->quantity * $detail->product->price;
             }
         }
-        return view('backend.report.index', compact('sumUser', 'sumOrder', 'sumOrderOfUser', 'total', 'thisMonthTotal'));
+
+        //Doanh thu tung thang trong 6 thang gan nhat
+        $sixMonths = [];
+        for ($i = 0; $i < 6; $i++) {
+            $sixMonths[] = $this->total($i);
+        }
+        // dd($sixMonths);
+        return view('backend.report.index', compact('sumUser', 'sumOrder', 'sumOrderOfUser', 'total', 'thisMonthTotal', 'sixMonths'));
+    }
+
+    public function total(int $subMonths)
+    {
+        $thisMonthDetails = OrderDetail::whereMonth('created_at', Carbon::now()->subMonths($subMonths)->format('m'))
+            ->whereYear('created_at', Carbon::now()->format('Y'))
+            ->get();
+        $thisMonthTotal = 0;
+        foreach ($thisMonthDetails as $detail) {
+            if ($detail->order->delivery == 2 && $detail->order->pay == 1) {
+                $thisMonthTotal += $detail->quantity * $detail->product->price;
+            }
+        }
+        return $thisMonthTotal;
     }
 
     /**
