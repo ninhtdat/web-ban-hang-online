@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -49,9 +52,19 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateProfile(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'phone' => 'required|regex:/^[0-9]{9,11}$/',
+            'password' => ['nullable', 'confirmed', Rules\Password::defaults()],
+        ]);
+        if ($request->password != null) {
+        $request->user()->update(['name' => $request->name, 'phone' => $request->phone, 'password' => Hash::make($request->password)]);
+        return back()->with('success', 'Cập nhật tài khoản thành công.');
+        }
+        $request->user()->update(['name' => $request->name, 'phone' => $request->phone]);
+        return back()->with('success', 'Cập nhật tài khoản thành công.');
     }
 
     /**

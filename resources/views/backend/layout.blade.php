@@ -390,6 +390,7 @@
     <script src="{{ asset('backend/js/demo/datatables-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('backend/js/demo/chart-pie-demo.js') }}"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>
 

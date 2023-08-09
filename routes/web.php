@@ -29,6 +29,7 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 //profile
 Route::resource('profile', ProfileController::class);
+Route::put('profile', [ProfileController::class, 'updateProfile'])->name('profile.updateProfile');
 //history
 Route::get('history-order', [HistoryController::class, 'index'])->name('history.index');
 //homepage
